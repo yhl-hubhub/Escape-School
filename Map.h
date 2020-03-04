@@ -1,15 +1,12 @@
 
 //函数声明 
-void inLevel();
-int drawMap(); 
+int drawMap();
+void showScore(); 
 
 
-//记录人物坐标重置坐标
-//(row,col)
-extern int row;
-extern int col;
-//记录怪物坐标
-//(mstrow,mstcol)
-extern int mstrow;
-extern int mstcol;
+//记录豆子的数目
+extern int cntFood;
+extern int cntJudge;
+//记录血量
+extern int cntBlood;
 

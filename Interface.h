@@ -6,7 +6,6 @@ void introduce();
 void enterNext();
 void showScore();
 void gameOver();
-void showScore();
 void dieOver(); 
 
 

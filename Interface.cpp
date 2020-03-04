@@ -2,9 +2,10 @@
 #include <time.h>
 #include <stdlib.h>
 #include <graphics.h>
+
 #include "Interface.h"
 #include "constant.h"
-#include "Map.h"
+#include "inLevel.h"
 
 #define t1 20
 #define t2 12
@@ -344,12 +345,3 @@ void gameOver()
     }
 }
 
-
-//输出分数
-void showScore()
-{
-    char s[5];
-    sprintf(s, "%d", score);
-    setfont(-30, 0, "宋体");
-    outtextxy(430, 510, s);
-}

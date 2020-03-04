@@ -15,6 +15,14 @@ int score=0;
 //判断关卡
 int lvFlag=0;
 int TOTAL=0;
+//记录人物坐标重置坐标
+//(row,col)
+int row=0;
+int col=0;
+//记录怪物坐标
+//(mstrow,mstcol)
+int mstrow=0;
+int mstcol=0;
 
 
 int pMap[10][10]={0};
