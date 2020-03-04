@@ -17,3 +17,9 @@ extern int pMap[10][10];
 extern const int pMap1[10][10];
 extern const int pMap2[10][10];
 extern const int pMap3[10][10];
+
+extern int row;
+extern int col;
+
+extern int mstrow;
+extern int mstcol;

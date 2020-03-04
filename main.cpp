@@ -3,24 +3,15 @@
 #include <stdlib.h>
 #include <graphics.h>
 
-#include "Map.h"
 #include "Interface.h"
-#include "constant.h" 
-#include "interaction.h"
 
 
 
 
 
 
-//记录人物坐标重置坐标
-//(row,col)
-int row=0;
-int col=0;
-//记录怪物坐标
-//(mstrow,mstcol)
-int mstrow=0;
-int mstcol=0;
+
+
 
 
 
