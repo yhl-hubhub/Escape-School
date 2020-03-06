@@ -11,8 +11,7 @@ int drawMap();
 //记录豆子的数目
 int cntFood;
 int cntJudge;
-//记录血量
-int cntBlood;
+
 
 
 
@@ -33,17 +32,17 @@ int drawMap()
     int y =0;
     
 	//每次重置地图都将数据归零
+    
     cntFood=0;
-    cntBlood=0;
     
 	showScore();
 	
 	for(int i=0;i<WIDTH;i++)
     {
-        y=i*55;
+        y=i*50;
         for(int j=0;j<LENGTH;j++)
         {
-            x=j*50;
+            x=j*55;
             imgMap=newimage();
             //豆子
             if(pMap[i][j]==0)
@@ -105,16 +104,15 @@ int drawMap()
             }
             else if(pMap[i][j]==9)  //空
             {
-                getimage(imgMap,"img\\white.jpg",0,0);
-                putimage(x,y,imgMap);
+                /*getimage(imgMap,"img\\white.jpg",0,0);
+                putimage(x,y,imgMap);*/	
             }
             //血量
             else if(pMap[i][j]==10)
             {
                 getimage(imgMap,"img\\blood.jpg",0,0);
                 putimage(x,y,imgMap);
-                //遍历后剩余血量
-                cntBlood++;
+                
             }
 
             //人物
@@ -142,8 +140,8 @@ int drawMap()
 
         //遍历数组之后的剩余豆子数目
         cntJudge=cntFood;
-        //传出数据
-        roleBlood=cntBlood;
+       
+        
         //在这里计算分数
         score=(TOTAL-cntJudge)*5;
     }

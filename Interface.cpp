@@ -18,7 +18,6 @@ void introduce();
 void enterNext();
 void showScore();
 void gameOver();
-void showScore();
 
 
 //加载界面
@@ -35,10 +34,71 @@ void loadMenu()
 //主界面
 void homeMenu()
 {
-    PIMAGE istart = newimage();
-    getimage(istart, "img\\start.jpg",0,0);
-    putimage(0, 0, istart);
-    delimage(istart);
+    mouse_msg mMsg = {0};
+	PIMAGE background = newimage();
+    
+    getimage(background,"img\\shu.jpg",0,0);
+    putimage(0, 0, background);
+    
+    
+    for ( ; is_run(); delay_fps(60))
+    {
+    	while(mousemsg())
+        {
+        	mMsg = getmouse();
+            
+        }
+        if(mMsg.is_up()&&mMsg.is_left())
+		{
+			getimage(background,"img\\ren.jpg",0,0);
+            putimage(0, 0, background);
+            break;
+		}
+    }
+    mMsg = getmouse();
+    
+	for ( ; is_run(); delay_fps(60))
+    {
+    	while(mousemsg())
+        {
+        	mMsg = getmouse();
+            
+        }
+        if(mMsg.is_up()&&mMsg.is_left())
+		{
+			getimage(background,"img\\renD.jpg",0,0);
+            putimage(0, 0, background);
+            break;
+		}
+    }
+    mMsg = getmouse();
+    /*while(mousemsg())
+        {
+            getimage(background,"img\\renL.jpg",0,0);
+            putimage(0, 0, background); 
+        }
+        
+     */
+    
+    
+    for ( ; is_run(); delay_fps(60))
+    {
+    	while(mousemsg())
+        {
+        	mMsg = getmouse();
+            
+        }
+        if(mMsg.is_up()&&mMsg.is_left())
+		{
+			PIMAGE istart = newimage();
+            getimage(istart, "img\\start.jpg",0,0);
+            putimage(0, 0, istart);
+            delimage(istart);
+            break;
+		}
+    }
+		
+    
 
     // 画帧率文字
     char str[20];
@@ -47,7 +107,8 @@ void homeMenu()
     outtextxy(0, 0, str);
 
     //鼠标点击
-    mouse_msg mMsg = {0};
+    mMsg = getmouse();
+   
     for ( ; is_run(); delay_fps(60))
     {
         //获取鼠标消息，这个函数会等待，等待到有消息为止
@@ -63,7 +124,7 @@ void homeMenu()
         }
         
         //游戏说明（这个还没做） 
-        else if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>140&&mMsg.x<335&&mMsg.y>340&&mMsg.y<370)
+        /*else if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>140&&mMsg.x<335&&mMsg.y>340&&mMsg.y<370)
         {
             introduce();
         }
@@ -73,7 +134,7 @@ void homeMenu()
         {
             cleardevice();
             closegraph();
-        }
+        }*/
 
     }
     getch();
@@ -100,7 +161,8 @@ void choice()
         {
             lvFlag=1;
             TOTAL=t1;
-            
+            rx=55;ry=100;
+            mstx=275;msty=250;
             //复制地图 
             for(int i=0;i<WIDTH;i++)
             {
@@ -268,6 +330,9 @@ void dieOver()
                     for(int j=0;j<LENGTH;j++)
                         pMap[i][j]=pMap1[i][j];
                 }
+                rx=55;ry=100;
+                mstx=275;
+                msty=250;
                 inLevel();
             }
             else if (lvFlag==2)
@@ -338,7 +403,7 @@ void gameOver()
             closegraph();
         }
         //
-        else if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>35&&mMsg.x<115&&mMsg.y>450&&mMsg.y<530)
+        else
         {
 
         }

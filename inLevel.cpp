@@ -12,21 +12,29 @@
   *Last edited by: 席诗祺
 *********************************/
 void inLevel()
-{
+{  
+    int dir,mstdir;
     PIMAGE img = newimage();
-    getimage(img, "img\\di.jpg",0,0);
+    getimage(img, "img\\di.jpg");
     putimage(0, 0, img);
+    roleBlood=3;
     
 	drawMap();
+	getimage(img, "img\\ren.jpg");
+	putimage(rx,ry,img);
+	getimage(img, "img\\guaiwu1.jpg");
+	putimage(mstx,msty,img);
 	
-    for ( ; is_run();delay_fps(10) )
+    for ( ; is_run(); delay_fps(10))
     {
         //人物移动
-        roleMove();
-        //判断是否相撞
-        crashJudge();
         //怪物随机移动
-        mstMove();
+        //判断是否相撞
+		dir=roleMove();
+		mstdir=mstMove();
+        crashJudge(dir,mstdir);
+        
+        
         
         //判断是否吃完所有豆子，吃完进入下一关卡
         if(cntJudge==0)

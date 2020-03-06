@@ -12,14 +12,20 @@ extern int WIDTH;
 extern int LENGTH;
 
 
-extern int pMap[10][10];
+extern int pMap[11][10];
 
-extern const int pMap1[10][10];
-extern const int pMap2[10][10];
-extern const int pMap3[10][10];
+extern const int pMap1[11][10];
+extern const int pMap2[11][10];
+extern const int pMap3[11][10];
 
 extern int row;
 extern int col;
 
 extern int mstrow;
 extern int mstcol;
+
+extern int rx;
+extern int ry;
+
+extern int mstx;
+extern int msty;
