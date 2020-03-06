@@ -1,6 +1,6 @@
-extern void roleMove();
-extern void mstMove();
-extern int crashJudge();
+extern int roleMove();
+extern int mstMove();
+extern int crashJudge(int dir,int mstdir);
 
 typedef struct 
 {
