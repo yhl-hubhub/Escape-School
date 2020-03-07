@@ -17,14 +17,42 @@
 #define UP 3
 #define DOWN 4
 
-int isTouch(int x,int y)
+////游戏进行中观察变量 
+//int watchUp = 0;
+//int watchDown = 0;
+//int watchLeft = 0;
+//int watchRight = 0; 
+
+
+
+//判断是否撞墙 
+int isWall(int isBlockCol,int isBlockRow)
 {
-	int judge;
+	if(pMap[isBlockRow][isBlockCol]==5)
+		return 1;
+	else
+		return 0;
+}
+
+int isTouch(int dir)
+{
+	int judge=0;
 	
-	//if()
+	if(dir==RIGHT)
+	{
+		if(isWall(blockCol_Next+1,blockRow_Next)||isWall(blockCol_Next+1,blockRow_Next+1))
+		{//右边有墙 
+			if(((rx+UNIT)>(blockCol_Next+1)*UNIT)&&(ry+UNIT>(blockRow_Next+1)*UNIT))
+				judge=1;//撞上了墙 
+		}
+			
+			
+	}
 	
 	return judge;
 } 
+
+
 
 
 //人物移动
@@ -43,37 +71,32 @@ int roleMove(int ldir)  //ldir时上次的朝向
             kMsg = getkey();
         }
     
-            //左
-    watch=(pMap[(rx-11)/UNITROW][ry/UNITCOL]=!2&&pMap[(rx-11)/UNITROW][(ry-1)/UNITCOL+1]!=2);
-   if(kMsg.key==65&&kMsg.msg==key_msg_down)//
-    {//&&(pMap[row][col-1]==0||pMap[row][col-1]==9||pMap[row][col-1]==3)
-        //outtextxy(50, 0, "A左");
-        //将上一个位置的图片处理了
-        //人物移动
-        /*pMap[row][col-1]=5;
-        pMap[row][col]=9;
-        col=col-1;
-        drawMap();*/
+    //左
+
+  	
+	if(kMsg.key==65&&kMsg.msg==key_msg_down)//
+    {
+        dir=LEFT;
+        blockRow_Next = ry/UNIT;
+		blockCol_Next = rx/UNITCOL;
+        rx-=10;
         
-        rx-=11;
         getimage(pUpd, "img\\renL.jpg");
         putimage(rx,ry,pUpd);/**/
-        dir=LEFT;
-        watch=0;
+        
     }
     //右
     else if(kMsg.key==68&&kMsg.msg==key_msg_down)
-    {//(pMap[row][col+1]==0||pMap[row][col+1]==9||pMap[row][col+1]==3)
-        //outtextxy(150, 0, "D右");
-        /*pMap[row][col+1]=6;
-        pMap[row][col]=9;
-        col=col+1;
-        drawMap();*/
-        
-        rx+=11;
+    {
+        dir=RIGHT;
+        rx+=10;
+        blockRow_Next = ry/UNIT;
+		blockCol_Next = rx/UNITCOL;
+		if(isTouch(dir))
+			rx-=10;
         getimage(pUpd, "img\\renR.jpg");
         putimage(rx,ry,pUpd);/**/
-        dir=RIGHT;
+        
     }
     //上
     else if(kMsg.key==87&&kMsg.msg==key_msg_down)//&&kMsg.msg==key_msg_up&&(pMap[row-1][col]==0||pMap[row-1][col]==9||pMap[row-1][col]==3))
@@ -85,6 +108,8 @@ int roleMove(int ldir)  //ldir时上次的朝向
         drawMap();*/
         
         ry-=10;
+        blockRow_Next = ry/UNIT;
+		blockCol_Next = rx/UNITCOL;
         getimage(pUpd, "img\\renU.jpg");
         putimage(rx,ry,pUpd);/**/
         dir=UP;
@@ -99,6 +124,8 @@ int roleMove(int ldir)  //ldir时上次的朝向
         */
         
         ry+=10;
+        blockRow_Next = ry/UNIT;
+		blockCol_Next = rx/UNITCOL;
         getimage(pUpd, "img\\renD.jpg");
         putimage(rx,ry,pUpd);/**/
         dir=DOWN;
@@ -156,7 +183,7 @@ int mstMove()
 	{
     	inum=(rand()%4)+1;
         //左
-        if(inum==LEFT&&pMap[(mstx-11)/UNITROW][msty/UNITCOL]!=2&&pMap[(mstx-11)/UNITROW][(msty-1)/UNITCOL+1]!=2)//&&(pMap[mstrow][mstcol-1]==9
+        if(inum==LEFT&&pMap[(mstx-11)/UNIT][msty/UNITCOL]!=2&&pMap[(mstx-11)/UNIT][(msty-1)/UNITCOL+1]!=2)//&&(pMap[mstrow][mstcol-1]==9
                  //||pMap[mstrow][mstcol-1]==5||pMap[mstrow][mstcol-1]==6||pMap[mstrow][mstcol-1]==7||pMap[mstrow][mstcol-1]==8)
         {
         /*pMap[mstrow][mstcol-1]=3;
@@ -169,7 +196,7 @@ int mstMove()
 	        flag=0;
         }
         //右
-        else if(inum==RIGHT&&pMap[(mstx+10)/UNITROW+1][msty/UNITCOL]!=2&&pMap[(mstx+10)/UNITROW+1][(msty-1)/UNITCOL+1]!=2)//&&(pMap[mstrow][mstcol+1]==9
+        else if(inum==RIGHT&&pMap[(mstx+10)/UNIT+1][msty/UNITCOL]!=2&&pMap[(mstx+10)/UNIT+1][(msty-1)/UNITCOL+1]!=2)//&&(pMap[mstrow][mstcol+1]==9
                     //||pMap[mstrow][mstcol+1]==5 ||pMap[mstrow][mstcol+1]==6||pMap[mstrow][mstcol+1]==7||pMap[mstrow][mstcol+1]==8)
         {
             cleardevice();
@@ -180,7 +207,7 @@ int mstMove()
             flag=0;
     }
         //上
-        else if(inum==UP&&pMap[mstx/UNITROW][(msty-10)/UNITCOL]!=2&&pMap[mstx/UNITROW+1][(msty-10)/UNITCOL]!=2)//(pMap[mstrow-1][mstcol]==9
+        else if(inum==UP&&pMap[mstx/UNIT][(msty-10)/UNITCOL]!=2&&pMap[mstx/UNIT+1][(msty-10)/UNITCOL]!=2)//(pMap[mstrow-1][mstcol]==9
                       //||pMap[mstrow-1][mstcol]==5||pMap[mstrow-1][mstcol]==6||pMap[mstrow-1][mstcol]==7||pMap[mstrow-1][mstcol]==8)
         {
             
@@ -190,7 +217,7 @@ int mstMove()
             flag=0;
         }
         //下
-        else if(inum==4&&pMap[mstx/UNITROW][(msty+10)/UNITCOL+1]!=2&&pMap[mstx/UNITROW+1][(msty+10)/UNITCOL+1]!=2)//&&(pMap[mstrow+1][mstcol]==9
+        else if(inum==4&&pMap[mstx/UNIT][(msty+10)/UNITCOL+1]!=2&&pMap[mstx/UNIT+1][(msty+10)/UNITCOL+1]!=2)//&&(pMap[mstrow+1][mstcol]==9
                     //  ||pMap[mstrow+1][mstcol]==5 ||pMap[mstrow+1][mstcol]==6||pMap[mstrow+1][mstcol]==7||pMap[mstrow+1][mstcol]==8))
         {
             

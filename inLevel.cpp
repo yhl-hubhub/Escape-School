@@ -28,7 +28,6 @@ void inLevel()
         //人物移动
         //怪物随机移动
         //判断是否相撞
-		//delay_ms(1000);
 		
 		cleardevice();
 		drawMap();

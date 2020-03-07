@@ -8,11 +8,20 @@
 int NUM_COL = 15;
 int NUM_ROW = 16;
 
-int UNITROW = 50;
+int UNIT = 50;
 int UNITCOL = 50;
 
-//游戏进行中观察变量 
-int watch = 0;
+int speed=10;
+
+int blockRowLeftUp;
+int blockColLeftUp;
+int blockRowRightDown;
+int blockColRightDown;
+
+int blockRow_Now = ry/UNIT;
+int blockCol_Now = rx/UNITCOL;
+int blockRow_Next;
+int blockCol_Next;
 
 //记录血量
 int roleBlood = 0;
@@ -49,13 +58,13 @@ int pMap[16][15]={0};
 const int pMap1[16][15]=
 {
 2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,
-1,0,0,9,0,0,0,0,0,9,9,9,9,9,1,
+1,0,0,9,5,0,0,0,0,9,9,9,9,9,1,
 1,0,0,0,9,9,9,2,2,9,9,9,9,9,1,
 1,2,9,0,9,9,9,9,0,9,9,9,9,9,1,
 1,0,9,9,3,9,9,9,0,9,9,9,9,9,1,
 1,9,9,9,9,9,2,9,9,9,9,9,9,9,1,
 1,2,2,9,9,9,2,9,9,9,9,9,9,9,1,
-1,9,9,9,9,9,2,9,9,9,9,9,9,9,1,
+1,9,9,9,9,9,9,9,9,9,9,9,9,9,1,
 2,9,9,9,0,0,0,9,9,9,9,9,9,9,2,
 2,9,9,9,0,0,0,9,9,9,9,9,9,9,2,
 2,9,9,9,0,0,0,9,9,9,9,9,9,9,2,

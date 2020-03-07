@@ -32,14 +32,14 @@ int drawMap()
     getimage(imgMap, "img\\di.jpg");
     putimage(0, 0, imgMap);
     
-    getimage(imgMap,"img\\food.jpg",0,0);
-    putimage(10*UNITROW,10*UNITCOL,imgMap);
+    getimage(imgMap,"img\\shu.jpg",0,0);
+    putimage(4*UNIT,1*UNITCOL,imgMap);
     
 //	for(int i=0;i<NUM_COL;i++){
 //		y=i*UNITCOL;
 //		for(int j=0;j<NUM_ROW;j++)
 //		{
-//		    x=j*UNITROW;
+//		    x=j*UNIT;
 //			if(pMap[i][j]==0)
 //            {
 //                getimage(imgMap,"img\\food.jpg",0,0);
@@ -91,8 +91,8 @@ int drawMap()
 //输出分数
 void showScore()
 {
-    char s[5];
-    sprintf(s, "%d", watch);
+    char s[15];
+    sprintf(s, "%d,%d,%d,%d", rx,ry,blockRow_Now,blockCol_Now);
     setfont(-30, 0, "宋体");
-    outtextxy(750, 10, s);
+    outtextxy(500, 10, s);
 }

@@ -161,7 +161,7 @@ void choice()
         {
             lvFlag=1;
             TOTAL=t1;
-            rx=55;ry=100;
+            rx=0;ry=0;
             mstx=275;msty=250;
             //¸´ÖÆµØÍ¼ 
             for(int i=0;i<NUM_COL;i++)
