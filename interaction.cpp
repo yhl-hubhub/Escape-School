@@ -17,8 +17,14 @@
 #define UP 3
 #define DOWN 4
 
-#define UNITROW 50
-#define UNITCOL 50
+int isTouch(int x,int y)
+{
+	int judge;
+	
+	//if()
+	
+	return judge;
+} 
 
 
 //人物移动
@@ -28,8 +34,7 @@ int roleMove(int ldir)  //ldir时上次的朝向
     key_msg kMsg ={0};
     int dir=0;
     
-    cleardevice();
-	drawMap();
+    
 
     //for ( ; is_run(); delay_fps(60))
     //{
@@ -37,99 +42,103 @@ int roleMove(int ldir)  //ldir时上次的朝向
         {
             kMsg = getkey();
         }
+    
             //左
-           if(kMsg.key==65&&kMsg.msg==key_msg_down&&pMap[(rx-11)/UNITROW][ry/UNITCOL]!=2&&pMap[(rx-11)/UNITROW][(ry-1)/UNITCOL+1]!=2)//
-            {//&&(pMap[row][col-1]==0||pMap[row][col-1]==9||pMap[row][col-1]==3)
-	            //outtextxy(50, 0, "A左");
-	            //将上一个位置的图片处理了
-	            //人物移动
-	            /*pMap[row][col-1]=5;
-	            pMap[row][col]=9;
-	            col=col-1;
-	            drawMap();*/
-	            
-	            rx-=11;
-	            getimage(pUpd, "img\\renL.jpg");
-	            putimage(rx,ry,pUpd);/**/
-                dir=LEFT;
-            }
-            //右
-            else if(kMsg.key==68&&kMsg.msg==key_msg_down&&pMap[(rx+10)/UNITROW+1][ry/UNITCOL]!=2&&pMap[(rx+10)/UNITROW+1][(ry-1)/UNITCOL+1]!=2)
-            {//(pMap[row][col+1]==0||pMap[row][col+1]==9||pMap[row][col+1]==3)
-                //outtextxy(150, 0, "D右");
-                /*pMap[row][col+1]=6;
-                pMap[row][col]=9;
-                col=col+1;
-                drawMap();*/
-                
-                rx+=11;
-	            getimage(pUpd, "img\\renR.jpg");
-	            putimage(rx,ry,pUpd);/**/
-                dir=RIGHT;
-            }
-            //上
-            else if(kMsg.key==87&&pMap[rx/UNITROW][(ry-10)/UNITCOL]!=2&&pMap[(rx-1)/UNITROW+1][(ry-10)/UNITCOL]!=2)//&&kMsg.msg==key_msg_up&&(pMap[row-1][col]==0||pMap[row-1][col]==9||pMap[row-1][col]==3))
-            {
-                //outtextxy(0, 0, "W上");
-                /*pMap[row-1][col]=7;
-                pMap[row][col]=9;
-                row=row-1;
-                drawMap();*/
-                
-                ry-=10;
-	            getimage(pUpd, "img\\renU.jpg");
-	            putimage(rx,ry,pUpd);/**/
-                dir=UP;
-            }
-            //下
-            else if(kMsg.key==83&&pMap[rx/UNITROW][(ry+9)/UNITCOL+1]!=2&&pMap[(rx-1)/UNITROW+1][(ry+9)/UNITCOL+1]!=2)//&&kMsg.msg==key_msg_up&&(pMap[row+1][col]==0||pMap[row+1][col]==9||pMap[row+1][col]==3))
-            {
-                //outtextxy(100, 0, "S下");
-                /*pMap[row+1][col]=8;
-                pMap[row][col]=9;
-                row=row+1;
-                */
-                
-                ry+=10;
-	            getimage(pUpd, "img\\renD.jpg");
-	            putimage(rx,ry,pUpd);/**/
-                dir=DOWN;
-            }
-            else
-            {
-            	if(ldir==LEFT)
-            	{
-            		getimage(pUpd, "img\\renL.jpg");
-	                putimage(rx,ry,pUpd);
-	                dir=LEFT;
-				}
-            	else if(ldir==RIGHT)
-            	{
-            		getimage(pUpd, "img\\renR.jpg");
-	                putimage(rx,ry,pUpd);
-	                dir=RIGHT;
-				}
-				else if(ldir==UP)
-            	{
-            		getimage(pUpd, "img\\renU.jpg");
-	                putimage(rx,ry,pUpd);
-	                dir=UP;
-				}
-				else if(ldir==DOWN)
-            	{
-            		getimage(pUpd, "img\\renD.jpg");
-	                putimage(rx,ry,pUpd);
-	                dir=DOWN;
-				}
-				else  //刚开始时方向为正 
-				{
-					getimage(pUpd, "img\\ren.jpg");
-	                putimage(rx,ry,pUpd);	                
-				}
-				
-			}
+    watch=(pMap[(rx-11)/UNITROW][ry/UNITCOL]=!2&&pMap[(rx-11)/UNITROW][(ry-1)/UNITCOL+1]!=2);
+   if(kMsg.key==65&&kMsg.msg==key_msg_down)//
+    {//&&(pMap[row][col-1]==0||pMap[row][col-1]==9||pMap[row][col-1]==3)
+        //outtextxy(50, 0, "A左");
+        //将上一个位置的图片处理了
+        //人物移动
+        /*pMap[row][col-1]=5;
+        pMap[row][col]=9;
+        col=col-1;
+        drawMap();*/
+        
+        rx-=11;
+        getimage(pUpd, "img\\renL.jpg");
+        putimage(rx,ry,pUpd);/**/
+        dir=LEFT;
+        watch=0;
+    }
+    //右
+    else if(kMsg.key==68&&kMsg.msg==key_msg_down)
+    {//(pMap[row][col+1]==0||pMap[row][col+1]==9||pMap[row][col+1]==3)
+        //outtextxy(150, 0, "D右");
+        /*pMap[row][col+1]=6;
+        pMap[row][col]=9;
+        col=col+1;
+        drawMap();*/
+        
+        rx+=11;
+        getimage(pUpd, "img\\renR.jpg");
+        putimage(rx,ry,pUpd);/**/
+        dir=RIGHT;
+    }
+    //上
+    else if(kMsg.key==87&&kMsg.msg==key_msg_down)//&&kMsg.msg==key_msg_up&&(pMap[row-1][col]==0||pMap[row-1][col]==9||pMap[row-1][col]==3))
+    {
+        //outtextxy(0, 0, "W上");
+        /*pMap[row-1][col]=7;
+        pMap[row][col]=9;
+        row=row-1;
+        drawMap();*/
+        
+        ry-=10;
+        getimage(pUpd, "img\\renU.jpg");
+        putimage(rx,ry,pUpd);/**/
+        dir=UP;
+    }
+    //下
+    else if(kMsg.key==83&&kMsg.msg==key_msg_down)//&&kMsg.msg==key_msg_up&&(pMap[row+1][col]==0||pMap[row+1][col]==9||pMap[row+1][col]==3))
+    {
+        //outtextxy(100, 0, "S下");
+        /*pMap[row+1][col]=8;
+        pMap[row][col]=9;
+        row=row+1;
+        */
+        
+        ry+=10;
+        getimage(pUpd, "img\\renD.jpg");
+        putimage(rx,ry,pUpd);/**/
+        dir=DOWN;
+    }
+    else
+    {
+    	if(ldir==LEFT)
+    	{
+    		getimage(pUpd, "img\\renL.jpg");
+            putimage(rx,ry,pUpd);
+            dir=LEFT;
+		}
+    	else if(ldir==RIGHT)
+    	{
+    		getimage(pUpd, "img\\renR.jpg");
+            putimage(rx,ry,pUpd);
+            dir=RIGHT;
+		}
+		else if(ldir==UP)
+    	{
+    		getimage(pUpd, "img\\renU.jpg");
+            putimage(rx,ry,pUpd);
+            dir=UP;
+		}
+		else if(ldir==DOWN)
+    	{
+    		getimage(pUpd, "img\\renD.jpg");
+            putimage(rx,ry,pUpd);
+            dir=DOWN;
+		}
+		else  //刚开始时方向为正 
+		{
+			getimage(pUpd, "img\\ren.jpg");
+            putimage(rx,ry,pUpd);	                
+		}
+		
+	}
     //}
     delimage(pUpd);
+    
     return dir;
 }
 

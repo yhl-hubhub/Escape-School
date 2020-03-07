@@ -2,7 +2,7 @@
 //extern int NUM_COL;
 //extern int NUM_ROW;
 
-//¼ÇÂ¼ÑªÁ¿
+extern int watch; 
 extern int roleBlood;
 extern int score;
 extern int lvFlag;
@@ -11,6 +11,8 @@ extern int TOTAL;
 extern int NUM_COL;
 extern int NUM_ROW;
 
+extern int UNITROW;
+extern int UNITCOL;
 
 extern int pMap[16][15];
 

@@ -306,6 +306,7 @@ void enterNext()
 void dieOver()
 {
     delay_ms(600);
+    cleardevice(); 
     PIMAGE pOver = newimage();
     getimage(pOver, "img\\dieover.jpg",0,0);
     putimage(0, 0, pOver);
