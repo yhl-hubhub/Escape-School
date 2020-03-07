@@ -38,3 +38,9 @@ extern int ry;
 
 extern int mstx;//¹ÖÎï×ø±ê 
 extern int msty;
+
+typedef struct 
+{
+    int isGet;
+}Element_TypeDef;
+

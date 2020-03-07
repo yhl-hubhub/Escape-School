@@ -1,8 +1,15 @@
-extern int roleMove(int ldir); 
-extern int mstMove();
-extern int crashJudge(int dir,int mstdir);
+
 
 typedef struct 
 {
     int isGet;
-}Element_TypeDef;
+    int start_x;
+    int start_y;
+    int mstx;
+    int msty;
+}Monster_TypeDef;
+
+extern int roleMove(int ldir); 
+extern int mstMove();
+extern int crashJudge(int dir,int mstdir);
+

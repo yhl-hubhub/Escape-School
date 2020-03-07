@@ -33,7 +33,7 @@ int drawMap()
     putimage(0, 0, imgMap);
     
     getimage(imgMap,"img\\shu.jpg",0,0);
-    putimage(4*UNIT,1*UNITCOL,imgMap);
+    putimage(4*UNIT,1*UNIT,imgMap);
     
 //	for(int i=0;i<NUM_COL;i++){
 //		y=i*UNITCOL;
