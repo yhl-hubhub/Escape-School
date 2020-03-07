@@ -48,25 +48,25 @@ int isTouch(int dir)
 	}
 	else if(dir==LEFT)
 	{
-		if(((rx)<(blockCol_Next)*UNIT)&& 
-				(isWall(blockCol_Next,blockRow_Next)||//左上有墙
+		if(((rx)<((blockCol_Next+1)*UNIT))&& 
+				( isWall(blockCol_Next,blockRow_Next)||//左上有墙
 				 (isWall(blockCol_Next,blockRow_Next+1)&&((ry+UNIT)>(blockRow_Next+1)*UNIT)))//左下有墙 
 		  ) 
 			judge=1;
 	}
 	else if(dir==UP)
 	{
-		if(((ry)<(blockRow_Next)*UNIT)&& 
-				((isWall(blockCol_Next,blockRow_Next)&&(rx<((blockCol_Next)*UNIT)))||//上左有墙
-				 (isWall(blockCol_Next+1,blockRow_Next)))//上右有墙 
+		if(((ry)<(blockRow_Next+1)*UNIT)&& 
+				((isWall(blockCol_Next+1,blockRow_Next)&&((rx+UNIT)>((blockCol_Next+1)*UNIT)))||//上右有墙
+				 (isWall(blockCol_Next,blockRow_Next)))//上左有墙 
 		  ) 
 			judge=1;
 	}
 	else if(dir==DOWN)
 	{
 		if(((ry+UNIT)>(blockRow_Next+1)*UNIT)&& 
-				((isWall(blockCol_Next+1,blockRow_Next+1)&&(rx<((blockCol_Next)*UNIT)))||//下左有墙
-				 (isWall(blockCol_Next,blockRow_Next+1)))//下右有墙 
+				((isWall(blockCol_Next+1,blockRow_Next+1)&&((rx+UNIT)>((blockCol_Next+1)*UNIT)))||//下右有墙
+				 (isWall(blockCol_Next,blockRow_Next+1)))//下左有墙 
 		  ) 
 			judge=1;
 	}
@@ -131,12 +131,6 @@ int roleMove(int ldir)  //ldir时上次的朝向
     //下
     else if(kMsg.key==83&&kMsg.msg==key_msg_down)//&&kMsg.msg==key_msg_up&&(pMap[row+1][col]==0||pMap[row+1][col]==9||pMap[row+1][col]==3))
     {
-        //outtextxy(100, 0, "S下");
-        /*pMap[row+1][col]=8;
-        pMap[row][col]=9;
-        row=row+1;
-        */
-        
         ry+=10;
         blockRow_Next = ry/UNIT;
 		blockCol_Next = rx/UNITCOL;
