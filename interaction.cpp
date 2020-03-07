@@ -119,6 +119,7 @@ int roleMove(int ldir)  //ldir时上次的朝向
     //上
     else if(kMsg.key==87&&kMsg.msg==key_msg_down)//&&kMsg.msg==key_msg_up&&(pMap[row-1][col]==0||pMap[row-1][col]==9||pMap[row-1][col]==3))
     {
+    	dir=UP;
         ry-=10;
         blockRow_Next = ry/UNIT;
 		blockCol_Next = rx/UNITCOL;
@@ -126,11 +127,11 @@ int roleMove(int ldir)  //ldir时上次的朝向
 			ry+=10;
         getimage(pUpd, "img\\renU.jpg");
         putimage(rx,ry,pUpd);/**/
-        dir=UP;
     }
     //下
     else if(kMsg.key==83&&kMsg.msg==key_msg_down)//&&kMsg.msg==key_msg_up&&(pMap[row+1][col]==0||pMap[row+1][col]==9||pMap[row+1][col]==3))
     {
+        dir=DOWN;
         ry+=10;
         blockRow_Next = ry/UNIT;
 		blockCol_Next = rx/UNITCOL;
@@ -138,7 +139,6 @@ int roleMove(int ldir)  //ldir时上次的朝向
 			ry-=10;
         getimage(pUpd, "img\\renD.jpg");
         putimage(rx,ry,pUpd);/**/
-        dir=DOWN;
     }
     else
     {
