@@ -21,25 +21,26 @@ void gameOver();
 
 
 //加载界面
-void loadMenu()
+/*void loadMenu()
 {
     PIMAGE pLoad = newimage();
     getimage(pLoad, "img\\load.jpg",0,0);
     putimage(0, 0, pLoad);
     delimage(pLoad);
 
-}
+}*/
 
 
 //主界面
 void homeMenu()
 {
     mouse_msg mMsg = {0};
+	
+	
 	PIMAGE background = newimage();
     
-    getimage(background,"img\\shu.jpg",0,0);
+	getimage(background,"img\\shu.jpg",0,0);
     putimage(0, 0, background);
-    
     
     for ( ; is_run(); delay_fps(60))
     {
@@ -72,14 +73,6 @@ void homeMenu()
 		}
     }
     mMsg = getmouse();
-    /*while(mousemsg())
-        {
-            getimage(background,"img\\renL.jpg",0,0);
-            putimage(0, 0, background); 
-        }
-        
-     */
-    
     
     for ( ; is_run(); delay_fps(60))
     {
@@ -90,11 +83,12 @@ void homeMenu()
         }
         if(mMsg.is_up()&&mMsg.is_left())
 		{
-			PIMAGE istart = newimage();
+		    PIMAGE istart = newimage();
             getimage(istart, "img\\start.jpg",0,0);
             putimage(0, 0, istart);
             delimage(istart);
-            break;
+		
+		break;
 		}
     }
 		
@@ -109,6 +103,7 @@ void homeMenu()
     //鼠标点击
     mMsg = getmouse();
    
+    PIMAGE imgMap = newimage();
     for ( ; is_run(); delay_fps(60))
     {
         //获取鼠标消息，这个函数会等待，等待到有消息为止
@@ -117,10 +112,11 @@ void homeMenu()
             mMsg = getmouse();
         }
         
-        //选择关卡
-		if(mMsg.is_up()&&mMsg.is_left())//&&mMsg.x>140&&mMsg.x<335&&mMsg.y>260&&mMsg.y<300
+        //开始游戏
+		if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>81&&mMsg.x<232&&mMsg.y>613&&mMsg.y<648)//
         {
-            choice();
+            getimage(imgMap, "img\\map1.jpg");
+            putimage(0, 0, imgMap);//choice();
         }
         
         //游戏说明（这个还没做） 
@@ -142,7 +138,7 @@ void homeMenu()
 
 
 //选择关卡界面
-void choice()
+/*void choice()
 {
     PIMAGE pChioce = newimage();
     getimage(pChioce, "img\\choice.jpg",0,0);
@@ -163,6 +159,7 @@ void choice()
             TOTAL=t1;
             rx=0;ry=0;
             mstx=275;msty=250;
+            
             //复制地图 
             for(int i=0;i<NUM_COL;i++)
             {
@@ -204,7 +201,7 @@ void choice()
     }
     getch();
 }
-
+*/
 
 //游戏介绍
 void introduce()
@@ -234,7 +231,7 @@ void introduce()
 
 
 //进入下一关卡
-void enterNext()
+/*void enterNext()
 {
     PIMAGE pNext = newimage();
     getimage(pNext, "img\\next.jpg",0,0);
@@ -293,13 +290,13 @@ void enterNext()
 
         }
         //进入到
-        /*else if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>50&&mMsg.x<135&&mMsg.y>350&&mMsg.y<450)
+        else if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>50&&mMsg.x<135&&mMsg.y>350&&mMsg.y<450)
         {
             gameOver();
-        }*/
+        }
 
     }
-}
+}*/
 
 
 //死亡游戏结束界面
