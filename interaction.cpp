@@ -40,13 +40,35 @@ int isTouch(int dir)
 	
 	if(dir==RIGHT)
 	{
-		if(isWall(blockCol_Next+1,blockRow_Next)||isWall(blockCol_Next+1,blockRow_Next+1))
-		{//右边有墙 
-			if(((rx+UNIT)>(blockCol_Next+1)*UNIT)&&(ry+UNIT>(blockRow_Next+1)*UNIT))
-				judge=1;//撞上了墙 
-		}
-			
-			
+		if(((rx+UNIT)>(blockCol_Next+1)*UNIT)&& 
+				(isWall(blockCol_Next+1,blockRow_Next)||//右上有墙
+				(isWall(blockCol_Next+1,blockRow_Next+1)&&(ry+UNIT>(blockRow_Next+1)*UNIT)))//右下有墙 
+		  ) 
+			judge=1;
+	}
+	else if(dir==LEFT)
+	{
+		if(((rx)<(blockCol_Next)*UNIT)&& 
+				(isWall(blockCol_Next,blockRow_Next)||//左上有墙
+				 (isWall(blockCol_Next,blockRow_Next+1)&&((ry+UNIT)>(blockRow_Next+1)*UNIT)))//左下有墙 
+		  ) 
+			judge=1;
+	}
+	else if(dir==UP)
+	{
+		if(((ry)<(blockRow_Next)*UNIT)&& 
+				((isWall(blockCol_Next,blockRow_Next)&&(rx<((blockCol_Next)*UNIT)))||//上左有墙
+				 (isWall(blockCol_Next+1,blockRow_Next)))//上右有墙 
+		  ) 
+			judge=1;
+	}
+	else if(dir==DOWN)
+	{
+		if(((ry+UNIT)>(blockRow_Next+1)*UNIT)&& 
+				((isWall(blockCol_Next+1,blockRow_Next+1)&&(rx<((blockCol_Next)*UNIT)))||//下左有墙
+				 (isWall(blockCol_Next,blockRow_Next+1)))//下右有墙 
+		  ) 
+			judge=1;
 	}
 	
 	return judge;
@@ -62,25 +84,21 @@ int roleMove(int ldir)  //ldir时上次的朝向
     key_msg kMsg ={0};
     int dir=0;
     
-    
-
-    //for ( ; is_run(); delay_fps(60))
-    //{
     while(kbmsg())
         {
             kMsg = getkey();
         }
-    
+    blockRow_Now=ry/UNITCOL;
+    blockCol_Now=rx/UNITCOL; 
     //左
-
-  	
 	if(kMsg.key==65&&kMsg.msg==key_msg_down)//
     {
         dir=LEFT;
-        blockRow_Next = ry/UNIT;
-		blockCol_Next = rx/UNITCOL;
         rx-=10;
-        
+		blockRow_Next = ry/UNIT;
+		blockCol_Next = rx/UNITCOL;
+        if(isTouch(dir))
+			rx+=10;
         getimage(pUpd, "img\\renL.jpg");
         putimage(rx,ry,pUpd);/**/
         
@@ -101,15 +119,11 @@ int roleMove(int ldir)  //ldir时上次的朝向
     //上
     else if(kMsg.key==87&&kMsg.msg==key_msg_down)//&&kMsg.msg==key_msg_up&&(pMap[row-1][col]==0||pMap[row-1][col]==9||pMap[row-1][col]==3))
     {
-        //outtextxy(0, 0, "W上");
-        /*pMap[row-1][col]=7;
-        pMap[row][col]=9;
-        row=row-1;
-        drawMap();*/
-        
         ry-=10;
         blockRow_Next = ry/UNIT;
 		blockCol_Next = rx/UNITCOL;
+		if(isTouch(dir))
+			ry+=10;
         getimage(pUpd, "img\\renU.jpg");
         putimage(rx,ry,pUpd);/**/
         dir=UP;
@@ -126,6 +140,8 @@ int roleMove(int ldir)  //ldir时上次的朝向
         ry+=10;
         blockRow_Next = ry/UNIT;
 		blockCol_Next = rx/UNITCOL;
+		if(isTouch(dir))
+			ry-=10;
         getimage(pUpd, "img\\renD.jpg");
         putimage(rx,ry,pUpd);/**/
         dir=DOWN;
