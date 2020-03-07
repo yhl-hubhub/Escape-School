@@ -2,15 +2,24 @@
 //extern int NUM_COL;
 //extern int NUM_ROW;
 
-//¼ÇÂ¼ÑªÁ¿
+extern int watch; 
 extern int roleBlood;
 extern int score;
 extern int lvFlag;
 extern int TOTAL;
 
+extern int blockRow_Now;
+extern int blockCol_Now;
+extern int blockRow_Next;
+extern int blockCol_Next;
+
 extern int NUM_COL;
 extern int NUM_ROW;
 
+extern int UNIT;
+extern int UNITCOL;
+
+extern int speed;
 
 extern int pMap[16][15];
 

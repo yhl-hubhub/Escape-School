@@ -161,7 +161,7 @@ void choice()
         {
             lvFlag=1;
             TOTAL=t1;
-            rx=55;ry=100;
+            rx=0;ry=0;
             mstx=275;msty=250;
             //¸´ÖÆµØÍ¼ 
             for(int i=0;i<NUM_COL;i++)
@@ -306,6 +306,7 @@ void enterNext()
 void dieOver()
 {
     delay_ms(600);
+    cleardevice(); 
     PIMAGE pOver = newimage();
     getimage(pOver, "img\\dieover.jpg",0,0);
     putimage(0, 0, pOver);

@@ -28,24 +28,27 @@ void inLevel()
         //人物移动
         //怪物随机移动
         //判断是否相撞
-		//delay_ms(1000);
-		dir=roleMove(dir);
+		
+		cleardevice();
+		drawMap();
+	
 		mstdir=mstMove();
+		
+		dir=roleMove(dir);
+		
         crashJudge(dir,mstdir);
         
         
         
         //判断是否吃完所有豆子，吃完进入下一关卡
-        if(cntJudge==0)
-        {
-            //showScore();
-            //进入下一关卡
-            delay_ms(60);
-            enterNext();
-        }
+//        if(cntJudge==0)
+//        {
+//            //进入下一关卡
+//            delay_ms(60);
+//            enterNext();
+//        }
         if(roleBlood==0)
         {
-            //cleardevice();
             dieOver();
         }
         
