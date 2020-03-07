@@ -22,11 +22,14 @@
 
 
 //人物移动
-int roleMove()
+int roleMove(int ldir)  //ldir时上次的朝向 
 {
     PIMAGE pUpd = newimage();
     key_msg kMsg ={0};
     int dir=0;
+    
+    cleardevice();
+	drawMap();
 
     //for ( ; is_run(); delay_fps(60))
     //{
@@ -40,11 +43,15 @@ int roleMove()
 	            //outtextxy(50, 0, "A左");
 	            //将上一个位置的图片处理了
 	            //人物移动
-	            pMap[row][col-1]=5;
+	            /*pMap[row][col-1]=5;
 	            pMap[row][col]=9;
 	            col=col-1;
-	            drawMap();
+	            drawMap();*/
 	            
+	            rx-=11;
+	            getimage(pUpd, "img\\renL.jpg");
+	            putimage(rx,ry,pUpd);/**/
+                dir=LEFT;
             }
             //右
             else if(kMsg.key==68&&kMsg.msg==key_msg_down&&pMap[(rx+10)/UNITROW+1][ry/UNITCOL]!=2&&pMap[(rx+10)/UNITROW+1][(ry-1)/UNITCOL+1]!=2)
@@ -54,11 +61,10 @@ int roleMove()
                 pMap[row][col]=9;
                 col=col+1;
                 drawMap();*/
-                getimage(pUpd, "img\\white.jpg");
-	            putimage(rx,ry,pUpd);
-                rx+=30;
+                
+                rx+=11;
 	            getimage(pUpd, "img\\renR.jpg");
-	            putimage(rx,ry,pUpd);
+	            putimage(rx,ry,pUpd);/**/
                 dir=RIGHT;
             }
             //上
@@ -69,11 +75,10 @@ int roleMove()
                 pMap[row][col]=9;
                 row=row-1;
                 drawMap();*/
-                getimage(pUpd, "img\\white.jpg");
-	            putimage(rx,ry,pUpd);
+                
                 ry-=10;
 	            getimage(pUpd, "img\\renU.jpg");
-	            putimage(rx,ry,pUpd);
+	            putimage(rx,ry,pUpd);/**/
                 dir=UP;
             }
             //下
@@ -83,14 +88,46 @@ int roleMove()
                 /*pMap[row+1][col]=8;
                 pMap[row][col]=9;
                 row=row+1;
-                drawMap();*/
-                getimage(pUpd, "img\\white.jpg");
-	            putimage(rx,ry,pUpd);
-                ry+=30;
+                */
+                
+                ry+=10;
 	            getimage(pUpd, "img\\renD.jpg");
-	            putimage(rx,ry,pUpd);
+	            putimage(rx,ry,pUpd);/**/
                 dir=DOWN;
             }
+            else
+            {
+            	if(ldir==LEFT)
+            	{
+            		getimage(pUpd, "img\\renL.jpg");
+	                putimage(rx,ry,pUpd);
+	                dir=LEFT;
+				}
+            	else if(ldir==RIGHT)
+            	{
+            		getimage(pUpd, "img\\renR.jpg");
+	                putimage(rx,ry,pUpd);
+	                dir=RIGHT;
+				}
+				else if(ldir==UP)
+            	{
+            		getimage(pUpd, "img\\renU.jpg");
+	                putimage(rx,ry,pUpd);
+	                dir=UP;
+				}
+				else if(ldir==DOWN)
+            	{
+            		getimage(pUpd, "img\\renD.jpg");
+	                putimage(rx,ry,pUpd);
+	                dir=DOWN;
+				}
+				else  //刚开始时方向为正 
+				{
+					getimage(pUpd, "img\\ren.jpg");
+	                putimage(rx,ry,pUpd);	                
+				}
+				
+			}
     //}
     delimage(pUpd);
     return dir;
@@ -102,57 +139,55 @@ int mstMove()
 {
 	PIMAGE pUpd = newimage();
     //showScore();
-    delay_ms(120);
+    //delay_ms(120);
+    //for(int i=1;i<=10;i++);
     srand((unsigned) time(NULL));
     int inum,flag=1;
     while(flag)
 	{
     	inum=(rand()%4)+1;
         //左
-        if(inum==LEFT&&pMap[(mstx-11)/UNITROW][msty/UNITCOL]!=2&&pMap[(mstx-11)/UNITROW][msty/UNITCOL+1]!=2)//&&(pMap[mstrow][mstcol-1]==9
+        if(inum==LEFT&&pMap[(mstx-11)/UNITROW][msty/UNITCOL]!=2&&pMap[(mstx-11)/UNITROW][(msty-1)/UNITCOL+1]!=2)//&&(pMap[mstrow][mstcol-1]==9
                  //||pMap[mstrow][mstcol-1]==5||pMap[mstrow][mstcol-1]==6||pMap[mstrow][mstcol-1]==7||pMap[mstrow][mstcol-1]==8)
         {
         /*pMap[mstrow][mstcol-1]=3;
         pMap[mstrow][mstcol]=9;
-        drawMap();*/
-            getimage(pUpd,"img\\white.jpg");
-	        putimage(mstx,msty,pUpd);
+        */
+            
             mstx-=11;
 	        getimage(pUpd,"img\\guaiwu1.jpg");
-	        putimage(mstx,msty,pUpd);
+	        putimage(mstx,msty,pUpd);/**/
 	        flag=0;
         }
         //右
-        else if(inum==RIGHT&&pMap[(mstx+11)/UNITROW+1][msty/UNITCOL]!=2&&pMap[(mstx+11)/UNITROW+1][msty/UNITCOL+1]!=2)//&&(pMap[mstrow][mstcol+1]==9
+        else if(inum==RIGHT&&pMap[(mstx+10)/UNITROW+1][msty/UNITCOL]!=2&&pMap[(mstx+10)/UNITROW+1][(msty-1)/UNITCOL+1]!=2)//&&(pMap[mstrow][mstcol+1]==9
                     //||pMap[mstrow][mstcol+1]==5 ||pMap[mstrow][mstcol+1]==6||pMap[mstrow][mstcol+1]==7||pMap[mstrow][mstcol+1]==8)
         {
-            getimage(pUpd,"img\\white.jpg");
-	        putimage(mstx,msty,pUpd);
+            cleardevice();
+            drawMap();
             mstx+=11;
 	        getimage(pUpd,"img\\guaiwu1.jpg");
-	        putimage(mstx,msty,pUpd);
+	        putimage(mstx,msty,pUpd);/**/
             flag=0;
     }
         //上
         else if(inum==UP&&pMap[mstx/UNITROW][(msty-10)/UNITCOL]!=2&&pMap[mstx/UNITROW+1][(msty-10)/UNITCOL]!=2)//(pMap[mstrow-1][mstcol]==9
                       //||pMap[mstrow-1][mstcol]==5||pMap[mstrow-1][mstcol]==6||pMap[mstrow-1][mstcol]==7||pMap[mstrow-1][mstcol]==8)
         {
-            getimage(pUpd,"img\\white.jpg");
-	        putimage(mstx,msty,pUpd);
+            
             msty-=10;
 	        getimage(pUpd,"img\\guaiwu1.jpg");
-	        putimage(mstx,msty,pUpd);
+	        putimage(mstx,msty,pUpd);/**/
             flag=0;
         }
         //下
         else if(inum==4&&pMap[mstx/UNITROW][(msty+10)/UNITCOL+1]!=2&&pMap[mstx/UNITROW+1][(msty+10)/UNITCOL+1]!=2)//&&(pMap[mstrow+1][mstcol]==9
                     //  ||pMap[mstrow+1][mstcol]==5 ||pMap[mstrow+1][mstcol]==6||pMap[mstrow+1][mstcol]==7||pMap[mstrow+1][mstcol]==8))
         {
-            getimage(pUpd,"img\\white.jpg");
-	        putimage(mstx,msty,pUpd);
+            
             msty+=10;
 	        getimage(pUpd,"img\\guaiwu1.jpg");
-	        putimage(mstx,msty,pUpd);
+	        putimage(mstx,msty,pUpd);/**/
             flag=0;
         }
     }

@@ -24,8 +24,8 @@ extern int col;
 extern int mstrow;
 extern int mstcol;
 
-extern int rx;
+extern int rx;//人物坐标 
 extern int ry;
 
-extern int mstx;
+extern int mstx;//怪物坐标 
 extern int msty;

@@ -35,17 +35,15 @@ int drawMap()
     
     cntFood=0;
     
-	showScore();
-	
-	for(int i=0;i<WIDTH;i++)
-    {
-        y=i*50;
-        for(int j=0;j<LENGTH;j++)
-        {
-            x=j*55;
-            imgMap=newimage();
-            //豆子
-            if(pMap[i][j]==0)
+    imgMap=newimage();
+    getimage(imgMap, "img\\di.jpg");
+    putimage(0, 0, imgMap);
+	for(int i=0;i<WIDTH;i++){
+		y=i*50;
+		for(int j=0;j<LENGTH;j++)
+		{
+		    x=j*55;
+			if(pMap[i][j]==0)
             {
                 getimage(imgMap,"img\\food.jpg",0,0);
                 putimage(x,y,imgMap);
@@ -53,10 +51,8 @@ int drawMap()
                 //遍历后剩余总数，计数豆子总数
                 cntFood++;
             }
-
-            //cntJudge=cntFood;
-            //树
-            else if(pMap[i][j]==1)
+			
+			else if(pMap[i][j]==1)
             {
                 getimage(imgMap,"img\\shu.jpg",0,0);
                 putimage(x,y,imgMap);
@@ -69,8 +65,41 @@ int drawMap()
                 putimage(x,y,imgMap);
 
             }
+            else if(pMap[i][j]==10)
+            {
+                getimage(imgMap,"img\\blood.jpg",0,0);
+                putimage(x,y,imgMap);
+                
+            }
+	}
+	}
+	
+
+                //delay_ms(1000);
+	showScore();
+	
+	/*for(int i=0;i<WIDTH;i++)
+    {
+        y=i*50;
+        for(int j=0;j<LENGTH;j++)
+        {
+            x=j*55;
+            
+            //豆子
+            if(pMap[i][j]==0)
+            {
+                getimage(imgMap,"img\\food.jpg",0,0);
+                putimage(x,y,imgMap);
+
+                //遍历后剩余总数，计数豆子总数
+                cntFood++;
+            }
+
+            //cntJudge=cntFood;
+            //树
+            
             //怪物
-            else if(pMap[i][j]==3)
+            /*else if(pMap[i][j]==3)
             {
                 getimage(imgMap,"img\\guaiwu1.jpg",0,0);
                 putimage(x,y,imgMap);
@@ -80,9 +109,9 @@ int drawMap()
                 //怪物随机移动后的坐标就是（i,j）==(mstrow,mstcol)
                 //每次遍历都通过怪物坐标pMap[mstrow][mstcol]的值贴图并把坐标（i,j）传给(mstrow,mstcol)
                 //所以不需要修改pMap[mstrow][mstcol]的横纵坐标
-            }
+            }*/
 
-            else if(pMap[i][j]==5)  //左
+            /*else if(pMap[i][j]==5)  //左
             {
                 getimage(imgMap,"img\\renL.jpg",0,0);
                 putimage(x,y,imgMap);
@@ -101,14 +130,14 @@ int drawMap()
             {
                 getimage(imgMap,"img\\renD.jpg",0,0);
                 putimage(x,y,imgMap);
-            }
-            else if(pMap[i][j]==9)  //空
+            }*/
+            /*else if(pMap[i][j]==9)  //空
             {
-                /*getimage(imgMap,"img\\white.jpg",0,0);
-                putimage(x,y,imgMap);*/	
-            }
+                getimage(imgMap,"img\\white.jpg",0,0);
+                putimage(x,y,imgMap);	
+            }*/
             //血量
-            else if(pMap[i][j]==10)
+           /* else if(pMap[i][j]==10)
             {
                 getimage(imgMap,"img\\blood.jpg",0,0);
                 putimage(x,y,imgMap);
@@ -121,7 +150,7 @@ int drawMap()
                 getimage(imgMap,"img\\ren.jpg",0,0);
                 putimage(x,y,imgMap);
                 row=i;
-                col=j;
+                col=j;*/
 
                 /*pMap[i][j]==6;------->置空，不贴图，实现更新后原位置的图片消失
                 重新生成地图
@@ -133,18 +162,19 @@ int drawMap()
                     上 pMap[row-11][col]     7
                     下 pMap[row+1][col]      8
                 */
-            }
-            delimage(imgMap);
+        /*    }
+            
 
-        }
-
+        }*/
+        
+		delimage(imgMap);
         //遍历数组之后的剩余豆子数目
         cntJudge=cntFood;
        
         
         //在这里计算分数
         score=(TOTAL-cntJudge)*5;
-    }
+    /*}*/
     
     return 0;
 }

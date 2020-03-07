@@ -22,7 +22,7 @@ int main()
 	//initialize game
     initgraph(550, 550);
     loadMenu();
-    delay_ms(800); 
+    delay_ms(500); 
     homeMenu();
     
     //

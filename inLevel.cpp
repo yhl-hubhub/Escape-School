@@ -13,10 +13,8 @@
 *********************************/
 void inLevel()
 {  
-    int dir,mstdir;
-    PIMAGE img = newimage();
-    getimage(img, "img\\di.jpg");
-    putimage(0, 0, img);
+    int dir,mstdir;//人怪的方向 
+    PIMAGE img=newimage();
     roleBlood=3;
     
 	drawMap();
@@ -25,12 +23,13 @@ void inLevel()
 	getimage(img, "img\\guaiwu1.jpg");
 	putimage(mstx,msty,img);
 	
-    for ( ; is_run(); delay_fps(10))
+    for ( ; is_run(); delay_fps(10))//
     {
         //人物移动
         //怪物随机移动
         //判断是否相撞
-		dir=roleMove();
+		//delay_ms(1000);
+		dir=roleMove(dir);
 		mstdir=mstMove();
         crashJudge(dir,mstdir);
         
