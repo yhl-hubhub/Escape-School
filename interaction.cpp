@@ -17,8 +17,8 @@
 #define UP 3
 #define DOWN 4
 
-#define UNITROW 55
-#define UNITCOL 50 
+#define UNITROW 50
+#define UNITCOL 50
 
 
 //»ÀŒÔ“∆∂Ø

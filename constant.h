@@ -1,6 +1,6 @@
 
-//extern int WIDTH;
-//extern int LENGTH;
+//extern int NUM_COL;
+//extern int NUM_ROW;
 
 //¼ÇÂ¼ÑªÁ¿
 extern int roleBlood;
@@ -8,15 +8,15 @@ extern int score;
 extern int lvFlag;
 extern int TOTAL;
 
-extern int WIDTH;
-extern int LENGTH;
+extern int NUM_COL;
+extern int NUM_ROW;
 
 
-extern int pMap[11][10];
+extern int pMap[16][15];
 
-extern const int pMap1[11][10];
-extern const int pMap2[11][10];
-extern const int pMap3[11][10];
+extern const int pMap1[16][15];
+extern const int pMap2[16][15];
+extern const int pMap3[16][15];
 
 extern int row;
 extern int col;

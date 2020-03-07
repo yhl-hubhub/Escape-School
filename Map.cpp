@@ -14,13 +14,6 @@ int cntJudge;
 
 
 
-
-
-
-extern int WIDTH;
-extern int LENGTH; 
-
-
 /*******************************
   *Description：生成地图 
   *Last edited by: 席诗祺
@@ -38,9 +31,9 @@ int drawMap()
     imgMap=newimage();
     getimage(imgMap, "img\\di.jpg");
     putimage(0, 0, imgMap);
-	for(int i=0;i<WIDTH;i++){
+	for(int i=0;i<NUM_COL;i++){
 		y=i*50;
-		for(int j=0;j<LENGTH;j++)
+		for(int j=0;j<NUM_ROW;j++)
 		{
 		    x=j*55;
 			if(pMap[i][j]==0)
@@ -78,10 +71,10 @@ int drawMap()
                 //delay_ms(1000);
 	showScore();
 	
-	/*for(int i=0;i<WIDTH;i++)
+	/*for(int i=0;i<NUM_COL;i++)
     {
         y=i*50;
-        for(int j=0;j<LENGTH;j++)
+        for(int j=0;j<NUM_ROW;j++)
         {
             x=j*55;
             

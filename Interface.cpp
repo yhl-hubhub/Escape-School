@@ -164,9 +164,9 @@ void choice()
             rx=55;ry=100;
             mstx=275;msty=250;
             //复制地图 
-            for(int i=0;i<WIDTH;i++)
+            for(int i=0;i<NUM_COL;i++)
             {
-                for(int j=0;j<LENGTH;j++)
+                for(int j=0;j<NUM_ROW;j++)
                     pMap[i][j]=pMap1[i][j];
             }
             
@@ -179,9 +179,9 @@ void choice()
         {
             lvFlag=2;
             TOTAL=t2;
-            for(int i=0;i<WIDTH;i++)
+            for(int i=0;i<NUM_COL;i++)
             {
-                for(int j=0;j<LENGTH;j++)
+                for(int j=0;j<NUM_ROW;j++)
                     pMap[i][j]=pMap2[i][j];
             }
             
@@ -193,9 +193,9 @@ void choice()
         {
             lvFlag=3;
             TOTAL=t3;
-            for(int i=0;i<WIDTH;i++)
+            for(int i=0;i<NUM_COL;i++)
             {
-                for(int j=0;j<LENGTH;j++)
+                for(int j=0;j<NUM_ROW;j++)
                     pMap[i][j]=pMap3[i][j];
             }
             inLevel();
@@ -261,9 +261,9 @@ void enterNext()
             lvFlag++;
 			if(lvFlag==2){
 				TOTAL=t2;
-            for(int i=0;i<WIDTH;i++)
+            for(int i=0;i<NUM_COL;i++)
             {
-                for(int j=0;j<LENGTH;j++)
+                for(int j=0;j<NUM_ROW;j++)
                     pMap[i][j]=pMap2[i][j];
             }
             inLevel();
@@ -273,9 +273,9 @@ void enterNext()
 			{
             lvFlag=3;
             TOTAL=t3;
-            for(int i=0;i<WIDTH;i++)
+            for(int i=0;i<NUM_COL;i++)
             {
-                for(int j=0;j<LENGTH;j++)
+                for(int j=0;j<NUM_ROW;j++)
                     pMap[i][j]=pMap3[i][j];
             }
             inLevel();
@@ -325,9 +325,9 @@ void dieOver()
             //判断在第几关重新开始？？？
             if(lvFlag==1)
             {
-                for(int i=0;i<WIDTH;i++)
+                for(int i=0;i<NUM_COL;i++)
                 {
-                    for(int j=0;j<LENGTH;j++)
+                    for(int j=0;j<NUM_ROW;j++)
                         pMap[i][j]=pMap1[i][j];
                 }
                 rx=55;ry=100;
@@ -337,18 +337,18 @@ void dieOver()
             }
             else if (lvFlag==2)
             {
-                for(int i=0;i<WIDTH;i++)
+                for(int i=0;i<NUM_COL;i++)
                 {
-                    for(int j=0;j<LENGTH;j++)
+                    for(int j=0;j<NUM_ROW;j++)
                         pMap[i][j]=pMap2[i][j];
                 }
                 inLevel();
             }
             else if (lvFlag==3)
             {
-                for(int i=0;i<WIDTH;i++)
+                for(int i=0;i<NUM_COL;i++)
                 {
-                    for(int j=0;j<LENGTH;j++)
+                    for(int j=0;j<NUM_ROW;j++)
                         pMap[i][j]=pMap3[i][j];
                 }
                 inLevel();
