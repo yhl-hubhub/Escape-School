@@ -11,6 +11,7 @@
 #define t2 12
 #define t3 10
 
+
 /*******************************
   *Description： 初始化程序 
   *Last edited by: 席诗祺 
@@ -135,7 +136,7 @@ void homeMenu()
 		if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>81&&mMsg.x<232&&mMsg.y>613&&mMsg.y<648)//
         {
         	rx=0;ry=0;
-            mstx=650;msty=100;
+            mstx=MST_START_X;msty=MST_START_Y;
             lvFlag=1; 
             //复制地图 
             for(int i=0;i<NUM_COL;i++)

@@ -1,0 +1,54 @@
+MUSIC music;
+const char* musicFile1 = "background music.mp3"; //background music
+const char* musicFile2 = "move 1.mp3";
+const char* musicFile3 = "lose blood1.mp3";
+const char* musicFile4 = "death.mp3";
+const char* musicFile5 = "pick up.mp3";
+
+
+//insert the following codes in the moving codes.
+music.OpenFile(musicFile2);
+music.play(0);
+music.Close();
+
+//insert the following codes at the beginning of the programme(the main.cpp)(background music)
+music.OpenFile(musicFile1);
+music.play();
+if (music.GetPlayStatus() == MUSIC_MODE_STOP) {
+	music.play(0);
+}
+
+//insert the following codes in the crashjudge codes
+music.OpenFile(musicFile3);
+music.play(0);
+music.close();
+
+//insert the following codes in the moving codes
+if (pMap[row][col-1] == 0) {
+	music.openFile(musicFile5);
+	music.play();
+	music.close();
+}//left
+
+if (pMap[row][col+1] == 0) {
+	music.openFile(musicFile5);
+	music.play();
+	music.close();
+}//right
+
+if (pMap[row-1][col] == 0) {
+	music.openFile(musicFile5);
+	music.play();
+	music.close();
+}//up
+
+if (pMap[row+1][col] == 0) {
+	music.openFile(musicFile5);
+	music.play();
+	music.close();
+}//down
+
+//insert the following codes in dieover codes
+music.openFile(musicFile4);
+music.play();
+music.close();

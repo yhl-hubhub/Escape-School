@@ -6,30 +6,24 @@
 #include "constant.h"
 
 
-int drawMap();
-
 /*******************************
   *Description：生成地图 
   *Last edited by: 席诗祺
   *Edit time：2020/3/7 20:45 
 *********************************/
 int drawMap()
-{
-	PIMAGE imgMap = newimage();
-	int i = 0;//pMap中的坐标 
-    int j = 0;
-    int x = 0;//实际坐标 
-    int y = 0;
-    
+{	
 	//每次重置地图都将数据归零
-    
+	PIMAGE imgMap = newimage();
+	int i,j;//pMap中的坐标 
+    int x,y;//实际坐标    
     
     if(lvFlag==1)
 	{
 		getimage(imgMap, "img\\map1.jpg");
         putimage(0, 0, imgMap);
     }
-        for(i=0;i<NUM_COL;i++)
+        for(i=0;i<NUM_COL;i++)//遍历地图的元素 
         {
         	y=i*UNIT;
         	
@@ -81,6 +75,7 @@ int drawMap()
     
     return 0;
 }
+
 
 /*******************************
   *Description： 输出分数,也用于观察变量 
