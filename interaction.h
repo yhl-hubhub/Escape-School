@@ -9,7 +9,7 @@ typedef struct
     int msty;
 }Monster_TypeDef;
 
-extern int roleMove(int ldir); 
+extern int roleMove(int ldir,int crash_image); 
 extern int mstMove();
-extern int crashJudge(int dir,int mstdir);
+extern int crashJudge();
 
