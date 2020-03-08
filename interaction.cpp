@@ -18,7 +18,11 @@ int isTouchWall(int dir,int x,int y);
 int isTouchElement(int dir,int x,int y);
 
 
-//人物移动
+/*******************************
+  *Description：人物移动
+  *Last edited by: 王晓宇
+  *Edit time：2020/3/8 18:45 
+*********************************/
 int roleMove(int ldir,int crash_image)  //ldir是上次的朝向,crash_image：撞怪时人的图片会闪，奇数亮偶数灭
 {
     PIMAGE pUpd = newimage();
@@ -141,7 +145,12 @@ int roleMove(int ldir,int crash_image)  //ldir是上次的朝向,crash_image：撞怪时人
 }
 
 
-//限定怪物的活动范围
+
+/*******************************
+  *Description：限定怪物的活动范围
+  *Last edited by: 王晓宇
+  *Edit time：2020/3/8 18:11 
+*********************************/
 int isOutRange()
 {
 	if(mstx>(MST_START_X+75)||mstx<(MST_START_X-75)||
@@ -228,7 +237,12 @@ int mstMove()
     return inum;
 }
 
-//碰撞判断
+
+/*******************************
+  *Description：碰撞判断
+  *Last edited by: 王晓宇
+  *Edit time：2020/3/8 17:45 
+*********************************/
 int crashJudge()
 {
 	if((mstx-rx<50&&mstx-rx>-50)&&(msty-ry<50&&msty-ry>-50)) 
@@ -240,7 +254,12 @@ int crashJudge()
 }
 
 
-//判断是否撞墙 
+
+/*******************************
+  *Description：判断是否是墙
+  *Last edited by: 王晓宇
+  *Edit time：2020/3/8 15:45 
+*********************************/
 int isWall(int isBlockCol,int isBlockRow)
 {
 	if(pMap[isBlockRow][isBlockCol]==2)
@@ -249,6 +268,12 @@ int isWall(int isBlockCol,int isBlockRow)
 		return 0;
 }
 
+
+/*******************************
+  *Description：判断是否是元素
+  *Last edited by: 王晓宇
+  *Edit time：2020/3/8 15:45 
+*********************************/
 int isElement(int isBlockCol,int isBlockRow)
 {
 	if(pMap[isBlockRow][isBlockCol]==11||pMap[isBlockRow][isBlockCol]==12||pMap[isBlockRow][isBlockCol]==13)
@@ -257,6 +282,12 @@ int isElement(int isBlockCol,int isBlockRow)
 		return 0;
 }
 
+
+/*******************************
+  *Description：判断是否是墙
+  *Last edited by: 席诗祺
+  *Edit time：2020/3/7 21:45 
+*********************************/
 int isTouchWall(int dir,int x,int y)
 {
 	
@@ -304,6 +335,11 @@ int isTouchWall(int dir,int x,int y)
 } 
 
 
+/*******************************
+  *Description：判断是否是墙
+  *Last edited by: 席诗祺
+  *Edit time：2020/3/7 21:40 
+*********************************/
 int isTouchElement(int dir,int x,int y)
 {
 	

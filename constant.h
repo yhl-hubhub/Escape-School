@@ -18,7 +18,8 @@ extern int UNITCOL;
 extern int MST_START_X ;
 extern int MST_START_Y;
 
-extern int rSpeed;// 
+extern int rSpeed;
+extern int mstSpeed;
 
 extern int pMap[16][15];
 

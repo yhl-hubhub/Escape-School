@@ -1,5 +1,3 @@
-
-
 typedef struct 
 {
     int isGet;
