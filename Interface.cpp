@@ -11,30 +11,26 @@
 #define t2 12
 #define t3 10
 
-void loadMenu();
-void homeMenu();
-void choice();
-void introduce();
-void enterNext();
-void showScore();
-void gameOver();
-
-
-//加载界面
-void loadMenu()
-{
+/*******************************
+  *Description： 初始化程序 
+  *Last edited by: 席诗祺 
+  *Edit time: 2020/3/8 15:17 
+*********************************/
+void initialize()
+{	
+	initgraph(750, 800);
     PIMAGE pLoad = newimage();
-    getimage(pLoad, "img\\load.jpg",0,0);
+    getimage(pLoad, "img\\loading.jpg",0,0);
     putimage(0, 0, pLoad);
     delimage(pLoad);
-
-}
-
-
-//主界面
-void homeMenu()
-{
-    mouse_msg mMsg = {0};
+    delay_ms(500); 
+    music.OpenFile("background music.mp3");
+    music.Play();
+    if (music.GetPlayStatus() == MUSIC_MODE_STOP) 
+	{
+	    music.Play(0);
+    } 
+	/*    mouse_msg mMsg = {0};
 	PIMAGE background = newimage();
     
     getimage(background,"img\\shu.jpg",0,0);
@@ -70,17 +66,9 @@ void homeMenu()
             putimage(0, 0, background);
             break;
 		}
-    }
-    mMsg = getmouse();
-    /*while(mousemsg())
-        {
-            getimage(background,"img\\renL.jpg",0,0);
-            putimage(0, 0, background); 
-        }
-        
-     */
-    
-    
+    } 
+	mMsg = getmouse();
+	
     for ( ; is_run(); delay_fps(60))
     {
     	while(mousemsg())
@@ -90,16 +78,42 @@ void homeMenu()
         }
         if(mMsg.is_up()&&mMsg.is_left())
 		{
-			PIMAGE istart = newimage();
-            getimage(istart, "img\\start.jpg",0,0);
-            putimage(0, 0, istart);
-            delimage(istart);
+			getimage(background,"img\\renU.jpg",0,0);
+            putimage(0, 0, background);
             break;
 		}
     }
-		
-    
+*/   
+    /*for ( ; is_run(); delay_fps(60))
+    {
+    	while(mousemsg())
+        {
+        	mMsg = getmouse();
+            
+        }
+        if(mMsg.is_up()&&mMsg.is_left())
+		{*/
+			//homeMenu();
+			/*break;
+        }
+    }*/
+ } 
 
+
+/*******************************
+  *Description： 主界面
+  *Last edited by: 王晓宇
+  *Edit time: 2020/3/8 11:17 
+*********************************/
+void homeMenu()
+{
+    mouse_msg mMsg = {0};
+    PIMAGE istart = newimage();
+    getimage(istart, "img\\start.jpg",0,0);
+    putimage(0, 0, istart);
+    delimage(istart);
+        
+		
     // 画帧率文字
     char str[20];
     sprintf(str, "fps %.02f", getfps()); //调用getfps取得当前帧率
@@ -117,12 +131,30 @@ void homeMenu()
             mMsg = getmouse();
         }
         
-        //选择关卡
-		if(mMsg.is_up()&&mMsg.is_left())//&&mMsg.x>140&&mMsg.x<335&&mMsg.y>260&&mMsg.y<300
+        //开始游戏 
+		if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>81&&mMsg.x<232&&mMsg.y>613&&mMsg.y<648)//
         {
-            choice();
+        	rx=0;ry=0;
+            mstx=650;msty=100;
+            lvFlag=1; 
+            //复制地图 
+            for(int i=0;i<NUM_COL;i++)
+            {
+                for(int j=0;j<NUM_ROW;j++)
+                    pMap[i][j]=pMap1[i][j];
+            }
+            
+            inLevel();//choice();
+            
         }
-        
+        else if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>533&&mMsg.x<684&&mMsg.y>613&&mMsg.y<648)
+        {
+        	music.Close();
+        	cleardevice();
+        	closegraph();
+		}
+    }    
+}        
         //游戏说明（这个还没做） 
         /*else if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>140&&mMsg.x<335&&mMsg.y>340&&mMsg.y<370)
         {
@@ -136,13 +168,33 @@ void homeMenu()
             closegraph();
         }*/
 
+    
+    //getch();
+//&&mMsg.x>140&&mMsg.x<335&&mMsg.y>260&&mMsg.y<300
+       /*{
+            choice();
+        }
+        
+        //游戏说明（这个还没做） 
+        else if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>140&&mMsg.x<335&&mMsg.y>340&&mMsg.y<370)
+        {
+            introduce();
+        }
+        
+        //退出
+        else if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>140&&mMsg.x<335&&mMsg.y>400&&mMsg.y<435)
+        {
+            cleardevice();
+            closegraph();
+        }
+
     }
-    getch();
-}
+    
+}*/
 
 
 //选择关卡界面
-void choice()
+/*void choice()
 {
     PIMAGE pChioce = newimage();
     getimage(pChioce, "img\\choice.jpg",0,0);
@@ -221,7 +273,7 @@ void introduce()
         {
             mMsg = getmouse();
         }
-        //选择关卡01
+        // 
         if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>0&&mMsg.x<500&&mMsg.y>0&&mMsg.y<550)
         {
             cleardevice();
@@ -293,18 +345,19 @@ void enterNext()
 
         }
         //进入到
-        /*else if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>50&&mMsg.x<135&&mMsg.y>350&&mMsg.y<450)
+        else if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>50&&mMsg.x<135&&mMsg.y>350&&mMsg.y<450)
         {
             gameOver();
-        }*/
+        }
 
     }
-}
+}*/
 
 
 //死亡游戏结束界面
 void dieOver()
 {
+	
     delay_ms(600);
     cleardevice(); 
     PIMAGE pOver = newimage();
@@ -321,7 +374,7 @@ void dieOver()
             mMsg = getmouse();
         }
         //重新开始
-        if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>44&&mMsg.x<200&&mMsg.y>494&&mMsg.y<532)
+        if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>115&&mMsg.x<295&&mMsg.y>320&&mMsg.y<360)
         {
             //判断在第几关重新开始？？？
             if(lvFlag==1)
@@ -332,9 +385,8 @@ void dieOver()
                         pMap[i][j]=pMap1[i][j];
                 }
                 rx=55;ry=100;
-                mstx=275;
-                msty=250;
-                inLevel();
+                mstx=MST_START_X;msty=MST_START_Y;//设置怪物的初始位置 
+                inLevel();//进入关卡控制程序 
             }
             else if (lvFlag==2)
             {
@@ -356,33 +408,31 @@ void dieOver()
             }
         }
         //退出
-        else if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>312&&mMsg.x<473&&mMsg.y>494&&mMsg.y<532)
+        else if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>440&&mMsg.x<660&&mMsg.y>320&&mMsg.y<360)
         {
-            cleardevice();
-            closegraph();
-
-        }
-
-        else if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>40&&mMsg.x<140&&mMsg.y>390&&mMsg.y<520)
-        {
-            gameOver();
+            homeMenu();
         }
     }
 }
 
+        /*else if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>40&&mMsg.x<140&&mMsg.y>390&&mMsg.y<520)
+        {
+            gameOver();
+        }*/
+    
 
 //游戏结束界面
 void gameOver()
 {
     PIMAGE pgover = newimage();
-    getimage(pgover, "img\\gover.jpg",0,0);
+    getimage(pgover, "img\\win.jpg",0,0);
     putimage(0, 0, pgover);
     delimage(pgover);
     //显示分数
     char s[5];
-    sprintf(s, "%d", score);
+    sprintf(s, "你的分数：%d", score);
     setfont(-30, 0, "宋体");
-    outtextxy(145, 355, s);
+    outtextxy(145, 250, s);
 
     mouse_msg mMsg = {0};
     for ( ; is_run(); delay_fps(60))
@@ -393,21 +443,16 @@ void gameOver()
             mMsg = getmouse();
         }
         //重新开始
-        if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>32&&mMsg.x<179&&mMsg.y>392&&mMsg.y<431)
+       /*if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>32&&mMsg.x<179&&mMsg.y>392&&mMsg.y<431)
         {
             homeMenu();
-        }
+        }*/
         //退出
-        else if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>367&&mMsg.x<440&&mMsg.y>400&&mMsg.y<435)
+        if(mMsg.is_up()&&mMsg.is_left()&&mMsg.x>440&&mMsg.x<660&&mMsg.y>320&&mMsg.y<360)
         {
-            cleardevice();
-            closegraph();
-        }
-        //
-        else
-        {
-
+        	homeMenu();
         }
     }
 }
+
 

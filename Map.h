@@ -1,4 +1,3 @@
-
 //º¯ÊıÉùÃ÷ 
 int drawMap();
 void showScore(); 
