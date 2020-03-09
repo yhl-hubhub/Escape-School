@@ -16,8 +16,8 @@
 int isWall(int isBlockCol,int isBlockRow); 
 int isTouchWall(int dir,int x,int y);
 int isTouchElement(int dir,int x,int y);
-
-
+//MUSIC music1;
+//MUSIC music2;
 int stepCnt=0;
 //void roleImage(int dir)
 //{
@@ -33,11 +33,11 @@ int stepCnt=0;
 
 
 /*******************************
-  *Description£ºÈËÎïÒÆ¶¯
-  *Last edited by: ÍõÏşÓî
-  *Edit time£º2020/3/8 18:45 
+  *Descriptionï¼šäººç‰©ç§»åŠ¨
+  *Last edited by: ç‹æ™“å®‡
+  *Edit timeï¼š2020/3/8 18:45 
 *********************************/
-int roleMove(int ldir,int crash_image)  //ldirÊÇÉÏ´ÎµÄ³¯Ïò,crash_image£º×²¹ÖÊ±ÈËµÄÍ¼Æ¬»áÉÁ£¬ÆæÊıÁÁÅ¼ÊıÃğ
+int roleMove(int ldir,int crash_image)  //ldiræ˜¯ä¸Šæ¬¡çš„æœå‘,crash_imageï¼šæ’æ€ªæ—¶äººçš„å›¾ç‰‡ä¼šé—ªï¼Œå¥‡æ•°äº®å¶æ•°ç­
 {
     PIMAGE pUpd = newimage();
     key_msg kMsg ={0};
@@ -49,7 +49,19 @@ int roleMove(int ldir,int crash_image)  //ldirÊÇÉÏ´ÎµÄ³¯Ïò,crash_image£º×²¹ÖÊ±ÈË
         }
     blockRow_Now=ry/UNITCOL;
     blockCol_Now=rx/UNITCOL; 
-    //×ó
+    //MOVE MUSIC
+    /*
+    music1.OpenFile("move1.mp3");
+    if(kMsg.msg==key_msg_down && (kMsg.key==65 || kMsg.key==68 || kMsg.key==87 || kMsg.key==83)
+    {
+    	music1.Play();
+	if(kMsg.msg==key_msg_down && music1.GetPlayStatus() == MUSIC_MODE_STOP)
+	{
+		music1.play(0)
+	}
+    }
+    */
+    //å·¦
 	if(kMsg.key==65&&kMsg.msg==key_msg_down)
     {
         dir=LEFT;
@@ -63,7 +75,7 @@ int roleMove(int ldir,int crash_image)  //ldirÊÇÉÏ´ÎµÄ³¯Ïò,crash_image£º×²¹ÖÊ±ÈË
 		}
         
     }
-    //ÓÒ
+    //å³
     else if(kMsg.key==68&&kMsg.msg==key_msg_down)
     {
         dir=RIGHT;
@@ -78,7 +90,7 @@ int roleMove(int ldir,int crash_image)  //ldirÊÇÉÏ´ÎµÄ³¯Ïò,crash_image£º×²¹ÖÊ±ÈË
 		}
         
     }
-    //ÉÏ
+    //ä¸Š
     else if(kMsg.key==87&&kMsg.msg==key_msg_down)
     {
     	dir=UP;
@@ -91,7 +103,7 @@ int roleMove(int ldir,int crash_image)  //ldirÊÇÉÏ´ÎµÄ³¯Ïò,crash_image£º×²¹ÖÊ±ÈË
             putimage(rx,ry,pUpd);/**/
 		}
     }
-    //ÏÂ
+    //ä¸‹
     else if(kMsg.key==83&&kMsg.msg==key_msg_down)
     {
         dir=DOWN;
@@ -104,7 +116,7 @@ int roleMove(int ldir,int crash_image)  //ldirÊÇÉÏ´ÎµÄ³¯Ïò,crash_image£º×²¹ÖÊ±ÈË
             putimage(rx,ry,pUpd);/**/
 		}
     }
-    else  //Ã»ÒÆ¶¯ 
+    else  //æ²¡ç§»åŠ¨ 
     {
     	if(ldir==LEFT)
     	{
@@ -142,7 +154,7 @@ int roleMove(int ldir,int crash_image)  //ldirÊÇÉÏ´ÎµÄ³¯Ïò,crash_image£º×²¹ÖÊ±ÈË
 		}
             dir=DOWN;
 		}
-		else  //¸Õ¿ªÊ¼Ê±·½ÏòÎªÕı 
+		else  //åˆšå¼€å§‹æ—¶æ–¹å‘ä¸ºæ­£ 
 		{
 			if(crash_image%2==1)
 		{
@@ -161,9 +173,9 @@ int roleMove(int ldir,int crash_image)  //ldirÊÇÉÏ´ÎµÄ³¯Ïò,crash_image£º×²¹ÖÊ±ÈË
 
 
 /*******************************
-  *Description£ºÏŞ¶¨¹ÖÎïµÄ»î¶¯·¶Î§
-  *Last edited by: ÍõÏşÓî
-  *Edit time£º2020/3/8 18:11 
+  *Descriptionï¼šé™å®šæ€ªç‰©çš„æ´»åŠ¨èŒƒå›´
+  *Last edited by: ç‹æ™“å®‡
+  *Edit timeï¼š2020/3/8 18:11 
 *********************************/
 int isOutRange()
 {
@@ -185,17 +197,17 @@ int isOutRange()
 		return 0;
  } 
 
-//¹ÖÎïÒÆ¶¯
+//æ€ªç‰©ç§»åŠ¨
 int mstMove()
 {
 	PIMAGE pUpd = newimage();
-	getimage(pUpd,"img\\59·Ö¾í×Ó.jpg");
+	getimage(pUpd,"img\\59åˆ†å·å­.jpg");
     srand((unsigned) time(NULL));
     int inum,flag=1;
     while(flag)
 	{
     	inum=(rand()%4)+1;
-        //×ó
+        //å·¦
         if(inum==LEFT)
 		{
             mstx-=rSpeed;
@@ -211,7 +223,7 @@ int mstMove()
 			
 	        
         }
-        //ÓÒ
+        //å³
         else if(inum==RIGHT)
 		{
            mstx+=rSpeed;
@@ -224,7 +236,7 @@ int mstMove()
 			}	
             
     	}
-        //ÉÏ
+        //ä¸Š
         else if(inum==UP)       
         {
             msty-=rSpeed;
@@ -237,7 +249,7 @@ int mstMove()
 			}	
             
         }
-        //ÏÂ
+        //ä¸‹
         else if(inum==DOWN)
         {
             msty+=rSpeed;
@@ -255,17 +267,17 @@ int mstMove()
     return inum;
 }
 
-//¹ÖÎïÒÆ¶¯
+//æ€ªç‰©ç§»åŠ¨
 int mstMove_struct(CHARACTER* mst)
 {
 	PIMAGE pUpd = newimage();
-	getimage(pUpd,"img\\59·Ö¾í×Ó.jpg");
+	getimage(pUpd,"img\\59åˆ†å·å­.jpg");
     srand((unsigned) time(NULL));
     int inum,flag=1;
     while(flag)
 	{
     	inum=(rand()%4)+1;
-        //×ó
+        //å·¦
         if(inum==LEFT)
 		{
             mst->x-=rSpeed;
@@ -281,7 +293,7 @@ int mstMove_struct(CHARACTER* mst)
 			
 	        
         }
-        //ÓÒ
+        //å³
         else if(inum==RIGHT)
 		{
            mst->x+=rSpeed;
@@ -294,7 +306,7 @@ int mstMove_struct(CHARACTER* mst)
 			}	
             
     	}
-        //ÉÏ
+        //ä¸Š
         else if(inum==UP)       
         {
             mst->y-=rSpeed;
@@ -307,7 +319,7 @@ int mstMove_struct(CHARACTER* mst)
 			}	
             
         }
-        //ÏÂ
+        //ä¸‹
         else if(inum==DOWN)
         {
             mst->y+=rSpeed;
@@ -326,9 +338,9 @@ int mstMove_struct(CHARACTER* mst)
 }
 
 /*******************************
-  *Description£ºÅö×²ÅĞ¶Ï
-  *Last edited by: ÍõÏşÓî
-  *Edit time£º2020/3/8 17:45 
+  *Descriptionï¼šç¢°æ’åˆ¤æ–­
+  *Last edited by: ç‹æ™“å®‡
+  *Edit timeï¼š2020/3/8 17:45 
 *********************************/
 int crashJudge(CHARACTER mst)
 {
@@ -343,9 +355,9 @@ int crashJudge(CHARACTER mst)
 
 
 /*******************************
-  *Description£ºÅĞ¶ÏÊÇ·ñÊÇÇ½
-  *Last edited by: ÍõÏşÓî
-  *Edit time£º2020/3/8 15:45 
+  *Descriptionï¼šåˆ¤æ–­æ˜¯å¦æ˜¯å¢™
+  *Last edited by: ç‹æ™“å®‡
+  *Edit timeï¼š2020/3/8 15:45 
 *********************************/
 int isWall(int isBlockCol,int isBlockRow)
 {
@@ -357,9 +369,9 @@ int isWall(int isBlockCol,int isBlockRow)
 
 
 /*******************************
-  *Description£ºÅĞ¶ÏÊÇ·ñÊÇÔªËØ
-  *Last edited by: ÍõÏşÓî
-  *Edit time£º2020/3/8 15:45 
+  *Descriptionï¼šåˆ¤æ–­æ˜¯å¦æ˜¯å…ƒç´ 
+  *Last edited by: ç‹æ™“å®‡
+  *Edit timeï¼š2020/3/8 15:45 
 *********************************/
 int isElement(int isBlockCol,int isBlockRow)
 {
@@ -371,9 +383,9 @@ int isElement(int isBlockCol,int isBlockRow)
 
 
 /*******************************
-  *Description£ºÅĞ¶ÏÊÇ·ñÊÇÇ½
-  *Last edited by: Ï¯Ê«ì÷
-  *Edit time£º2020/3/7 21:45 
+  *Descriptionï¼šåˆ¤æ–­æ˜¯å¦æ˜¯å¢™
+  *Last edited by: å¸­è¯—ç¥º
+  *Edit timeï¼š2020/3/7 21:45 
 *********************************/
 int isTouchWall(int dir,int x,int y)
 {
@@ -386,8 +398,8 @@ int isTouchWall(int dir,int x,int y)
 	if(dir==RIGHT)
 	{
 		if(((x+UNIT)>(blockCol_Next+1)*UNIT)&& 
-				(isWall(blockCol_Next+1,blockRow_Next)||//ÓÒÉÏÓĞÇ½
-				(isWall(blockCol_Next+1,blockRow_Next+1)&&(y+UNIT>(blockRow_Next+1)*UNIT)))//ÓÒÏÂÓĞÇ½ 
+				(isWall(blockCol_Next+1,blockRow_Next)||//å³ä¸Šæœ‰å¢™
+				(isWall(blockCol_Next+1,blockRow_Next+1)&&(y+UNIT>(blockRow_Next+1)*UNIT)))//å³ä¸‹æœ‰å¢™ 
 		  )
 		  	judge=1;
 		   
@@ -396,24 +408,24 @@ int isTouchWall(int dir,int x,int y)
 	else if(dir==LEFT)
 	{
 		if((x<(blockCol_Next+1)*UNIT)&& 
-				(isWall(blockCol_Next,blockRow_Next)||//×óÉÏÓĞÇ½
-				(isWall(blockCol_Next,blockRow_Next+1)&&((y+UNIT)>(blockRow_Next+1)*UNIT)))//×óÏÂÓĞÇ½ 
+				(isWall(blockCol_Next,blockRow_Next)||//å·¦ä¸Šæœ‰å¢™
+				(isWall(blockCol_Next,blockRow_Next+1)&&((y+UNIT)>(blockRow_Next+1)*UNIT)))//å·¦ä¸‹æœ‰å¢™ 
 		  ) 
 			judge=1;
 	}
 	else if(dir==UP)
 	{
 		if((y<(blockRow_Next+1)*UNIT)&& 
-				((isWall(blockCol_Next+1,blockRow_Next)&&((x+UNIT)>((blockCol_Next+1)*UNIT)))||//ÉÏÓÒÓĞÇ½
-				 (isWall(blockCol_Next,blockRow_Next)))//ÉÏ×óÓĞÇ½ 
+				((isWall(blockCol_Next+1,blockRow_Next)&&((x+UNIT)>((blockCol_Next+1)*UNIT)))||//ä¸Šå³æœ‰å¢™
+				 (isWall(blockCol_Next,blockRow_Next)))//ä¸Šå·¦æœ‰å¢™ 
 		  ) 
 			judge=1;
 	}
 	else if(dir==DOWN)
 	{
 		if(((y+UNIT)>(blockRow_Next+1)*UNIT)&& 
-				((isWall(blockCol_Next+1,blockRow_Next+1)&&((x+UNIT)>((blockCol_Next+1)*UNIT)))||//ÏÂÓÒÓĞÇ½
-				 (isWall(blockCol_Next,blockRow_Next+1)))//ÏÂ×óÓĞÇ½ 
+				((isWall(blockCol_Next+1,blockRow_Next+1)&&((x+UNIT)>((blockCol_Next+1)*UNIT)))||//ä¸‹å³æœ‰å¢™
+				 (isWall(blockCol_Next,blockRow_Next+1)))//ä¸‹å·¦æœ‰å¢™ 
 		  ) 
 			judge=1;
 	}
@@ -423,9 +435,9 @@ int isTouchWall(int dir,int x,int y)
 
 
 /*******************************
-  *Description£ºÅĞ¶ÏÊÇ·ñÊÇÇ½
-  *Last edited by: Ï¯Ê«ì÷
-  *Edit time£º2020/3/7 21:40 
+  *Descriptionï¼šåˆ¤æ–­æ˜¯å¦æ˜¯å¢™
+  *Last edited by: å¸­è¯—ç¥º
+  *Edit timeï¼š2020/3/7 21:40 
 *********************************/
 int isTouchElement(int dir,int x,int y)
 {
@@ -438,8 +450,8 @@ int isTouchElement(int dir,int x,int y)
 	if(dir==RIGHT)
 	{
 		if(((rx+UNIT)>(blockCol_Next+1)*UNIT)&& 
-				(isElement(blockCol_Next+1,blockRow_Next)||//ÓÒÉÏÓĞÇ½
-				(isElement(blockCol_Next+1,blockRow_Next+1)&&(ry+UNIT>(blockRow_Next+1)*UNIT)))//ÓÒÏÂÓĞÇ½ 
+				(isElement(blockCol_Next+1,blockRow_Next)||//å³ä¸Šæœ‰å¢™
+				(isElement(blockCol_Next+1,blockRow_Next+1)&&(ry+UNIT>(blockRow_Next+1)*UNIT)))//å³ä¸‹æœ‰å¢™ 
 		  ) 
 			{
 		  	    if(isElement(blockCol_Next+1,blockRow_Next)) pMap[blockRow_Next][blockCol_Next+1]=0;
@@ -450,8 +462,8 @@ int isTouchElement(int dir,int x,int y)
 	else if(dir==LEFT)
 	{
 		if(((rx)<((blockCol_Next+1)*UNIT))&& 
-				( isElement(blockCol_Next,blockRow_Next)||//×óÉÏÓĞÇ½
-				 (isElement(blockCol_Next,blockRow_Next+1)&&((ry+UNIT)>(blockRow_Next+1)*UNIT)))//×óÏÂÓĞÇ½ 
+				( isElement(blockCol_Next,blockRow_Next)||//å·¦ä¸Šæœ‰å¢™
+				 (isElement(blockCol_Next,blockRow_Next+1)&&((ry+UNIT)>(blockRow_Next+1)*UNIT)))//å·¦ä¸‹æœ‰å¢™ 
 		  ) 
 			{
 		  	    if(isElement(blockCol_Next,blockRow_Next)) pMap[blockRow_Next][blockCol_Next]=0;
@@ -462,8 +474,8 @@ int isTouchElement(int dir,int x,int y)
 	else if(dir==UP)
 	{
 		if(((ry)<(blockRow_Next+1)*UNIT)&& 
-				((isElement(blockCol_Next+1,blockRow_Next)&&((rx+UNIT)>((blockCol_Next+1)*UNIT)))||//ÉÏÓÒÓĞÇ½
-				 (isElement(blockCol_Next,blockRow_Next)))//ÉÏ×óÓĞÇ½ 
+				((isElement(blockCol_Next+1,blockRow_Next)&&((rx+UNIT)>((blockCol_Next+1)*UNIT)))||//ä¸Šå³æœ‰å¢™
+				 (isElement(blockCol_Next,blockRow_Next)))//ä¸Šå·¦æœ‰å¢™ 
 		  ) 
 			{
 		  	    if(isElement(blockCol_Next+1,blockRow_Next)) pMap[blockRow_Next][blockCol_Next+1]=0;
@@ -474,8 +486,8 @@ int isTouchElement(int dir,int x,int y)
 	else if(dir==DOWN)
 	{
 		if(((ry+UNIT)>(blockRow_Next+1)*UNIT)&& 
-				((isElement(blockCol_Next+1,blockRow_Next+1)&&((rx+UNIT)>((blockCol_Next+1)*UNIT)))||//ÏÂÓÒÓĞÇ½
-				 (isElement(blockCol_Next,blockRow_Next+1)))//ÏÂ×óÓĞÇ½ 
+				((isElement(blockCol_Next+1,blockRow_Next+1)&&((rx+UNIT)>((blockCol_Next+1)*UNIT)))||//ä¸‹å³æœ‰å¢™
+				 (isElement(blockCol_Next,blockRow_Next+1)))//ä¸‹å·¦æœ‰å¢™ 
 		  ) 
 			{
 		  	    if(isElement(blockCol_Next+1,blockRow_Next+1)) pMap[blockRow_Next+1][blockCol_Next+1]=0;
