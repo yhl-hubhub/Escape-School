@@ -9,5 +9,6 @@ typedef struct
 
 extern int roleMove(int ldir,int crash_image); 
 extern int mstMove();
-extern int crashJudge();
+extern int crashJudge(CHARACTER mst);
+extern int mstMove_struct(CHARACTER* mst);
 

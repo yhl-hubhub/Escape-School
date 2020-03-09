@@ -24,20 +24,20 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-main.o: main.cpp
-	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+main.o: main.c
+	$(CPP) -c main.c -o main.o $(CXXFLAGS)
 
-Map.o: Map.cpp
-	$(CPP) -c Map.cpp -o Map.o $(CXXFLAGS)
+Map.o: Map.c
+	$(CPP) -c Map.c -o Map.o $(CXXFLAGS)
 
-Interface.o: Interface.cpp
-	$(CPP) -c Interface.cpp -o Interface.o $(CXXFLAGS)
+Interface.o: Interface.c
+	$(CPP) -c Interface.c -o Interface.o $(CXXFLAGS)
 
-constant.o: constant.cpp
-	$(CPP) -c constant.cpp -o constant.o $(CXXFLAGS)
+constant.o: constant.c
+	$(CPP) -c constant.c -o constant.o $(CXXFLAGS)
 
-interaction.o: interaction.cpp
-	$(CPP) -c interaction.cpp -o interaction.o $(CXXFLAGS)
+interaction.o: interaction.c
+	$(CPP) -c interaction.c -o interaction.o $(CXXFLAGS)
 
-inLevel.o: inLevel.cpp
-	$(CPP) -c inLevel.cpp -o inLevel.o $(CXXFLAGS)
+inLevel.o: inLevel.c
+	$(CPP) -c inLevel.c -o inLevel.o $(CXXFLAGS)
