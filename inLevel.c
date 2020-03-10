@@ -17,39 +17,43 @@ CHARACTER mst1 = {0,{650,100},650,100};
 CHARACTER mst2 = {0,{50,650},50,650};
 
 /*******************************
-  *Description£º ½øÈë¹Ø¿¨ºóµÄ¿ØÖÆº¯Êı
-  *Last edited by: Ï¯Ê«ì÷ 
+  *Descriptionï¼š è¿›å…¥å…³å¡åçš„æ§åˆ¶å‡½æ•°
+  *Last edited by: å¸­è¯—ç¥º 
   *Edit time: 2020/3/7 20:50
 *********************************/
 void inLevel()
 {  
-    int dir,mstdir;//ÈË¹ÖµÄ·½Ïò 
-    int lcrash=0,//×²¹ÖºóÒ»¶ÎÊ±¼äÄÚ²»ÔÙ×²
-	crash_image=1;//×²¹ÖÊ±ÈËµÄÍ¼Æ¬»áÉÁ£¬ÆæÊıÁÁÅ¼ÊıÃğ 
+    int dir,mstdir;//äººæ€ªçš„æ–¹å‘ 
+    int lcrash=0,//æ’æ€ªåä¸€æ®µæ—¶é—´å†…ä¸å†æ’
+	crash_image=1;//æ’æ€ªæ—¶äººçš„å›¾ç‰‡ä¼šé—ªï¼Œå¥‡æ•°äº®å¶æ•°ç­ 
     PIMAGE img=newimage();
     roleBlood=3;
     score=0;
-	
-	
+    MUSIC music4;
+    MUSIC music5;
     for ( ; is_run(); delay_fps(10))//
     {
-        //Çå¿Õ½çÃæ 
+        //æ¸…ç©ºç•Œé¢ 
 		cleardevice();
-		//»æÖÆµØÍ¼ 
+		//ç»˜åˆ¶åœ°å›¾ 
 		drawMap();
-		//ÅĞ¶ÏÊÇ·ñÏà×²
+		//åˆ¤æ–­æ˜¯å¦ç›¸æ’
 		if(lcrash) crash_image++;
 		else crash_image=1;
-		//ÈËÎïÒÆ¶¯
+		//äººç‰©ç§»åŠ¨
 		dir=roleMove(dir,crash_image);
-		//¹ÖÎïËæ»úÒÆ¶¯
+		//æ€ªç‰©éšæœºç§»åŠ¨
 		//mstdir=mstMove();
         mstMove_struct(&mst1);
          mstMove_struct(&mst2);
 
-        //¿ÛÑª 
+        //æ‰£è¡€ 
         if(!lcrash&&(crashJudge(mst1)||crashJudge(mst2)))
         {
+            music4.OpenFile("loseblood1.mp3");
+    		if(music4.IsOpen()){
+		music4.Play();
+		}
         	if(roleBlood==3)
             {
                 pMap[BLR][BLC3]=9;      
@@ -68,6 +72,11 @@ void inLevel()
          
         if(roleBlood==0)
         {
+	    music5.OpenFile("death.mp3");
+	    if(music5.IsOpen())
+	    {
+		music5.Play();    
+	    }    
             dieOver();
         }
         
