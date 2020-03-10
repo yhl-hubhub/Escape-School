@@ -16,8 +16,7 @@
 int isWall(int isBlockCol,int isBlockRow); 
 int isTouchWall(int dir,int x,int y);
 int isTouchElement(int dir,int x,int y);
-//MUSIC music1;
-//MUSIC music2;
+MUSIC music1;
 int stepCnt=0;
 //void roleImage(int dir)
 //{
@@ -50,7 +49,6 @@ int roleMove(int ldir,int crash_image)  //ldir是上次的朝向,crash_image：�
     blockRow_Now=ry/UNITCOL;
     blockCol_Now=rx/UNITCOL; 
     //MOVE MUSIC
-    /*
     music1.OpenFile("move1.mp3");
     if(kMsg.msg==key_msg_down && (kMsg.key==65 || kMsg.key==68 || kMsg.key==87 || kMsg.key==83)
     {
@@ -60,7 +58,6 @@ int roleMove(int ldir,int crash_image)  //ldir是上次的朝向,crash_image：�
 		music1.play(0)
 	}
     }
-    */
     //左
 	if(kMsg.key==65&&kMsg.msg==key_msg_down)
     {
