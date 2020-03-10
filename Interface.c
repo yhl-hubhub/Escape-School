@@ -365,12 +365,6 @@ void dieOver()
     getimage(pOver, "img\\dieover.jpg",0,0);
     putimage(0, 0, pOver);
     delimage(pOver);
-    /*MUSIC music3;
-    music3.OpenFile("death.mp3");
-    f (music.IsOpen()) {
-	music3.Play;
-    }
-    */
     mouse_msg mMsg = {0};
     for ( ; is_run(); delay_fps(60))
     {
